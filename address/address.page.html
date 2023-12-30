@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+      <ion-back-button defaultHref="/cart"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Add Address</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <!-- Contact Details -->
+  <ion-item>
+    <ion-label position="floating">First Name</ion-label>
+    <ion-input [(ngModel)]="firstName" type="text"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Last Name</ion-label>
+    <ion-input [(ngModel)]="lastName" type="text"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Mobile</ion-label>
+    <ion-input [(ngModel)]="mobile" type="tel"></ion-input>
+  </ion-item>
+
+  <!-- Address Details -->
+  <ion-item>
+    <ion-label>Country</ion-label>
+    <ion-select [(ngModel)]="selectedCountry">
+      <ion-select-option *ngFor="let country of countries" [value]="country.value">{{ country.label }}</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Address</ion-label>
+    <ion-input [(ngModel)]="address" type="text"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Town/City</ion-label>
+    <ion-input [(ngModel)]="townCity" type="text"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Postcode</ion-label>
+    <ion-input [(ngModel)]="postcode" type="text"></ion-input>
+  </ion-item>
+
+  <!-- Confirm Button -->
+  <ion-button expand="full" color="primary" (click)="confirmAddress()">Confirm Address</ion-button>
+
+</ion-content>

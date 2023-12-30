@@ -1,0 +1,78 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+
+    <ion-title class="maven-pro-title">FACE-CARE</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+
+  <!-- Dropdowns -->
+  <ion-select interface="popover" style="border: none; margin-left: auto; background: none; --ion-select-arrow-color: transparent;">
+    <ion-select-option value="recentlyAdded">Low to high</ion-select-option>
+    <ion-select-option value="Expiring soonest">High to low</ion-select-option>
+  </ion-select>
+
+<ion-select interface="popover" style="border: none; margin-left: 270px; margin-top: -40px; --background: none; --ion-select-arrow-color: transparent;"
+(ionChange)="navigateToProductType($event)">
+<ion-select-option value="cleansers">Face serums</ion-select-option>
+<ion-select-option value="moisturizers">Moisturizers</ion-select-option>
+<ion-select-option value="Night care">Night care</ion-select-option>
+<ion-select-option value="Tinted care">Tinted care</ion-select-option>
+</ion-select>
+
+<!-- Product Grid -->
+<ion-row>
+  <ion-col size="6" *ngFor="let product of products">
+    <!-- Heart Icon -->
+    <ion-icon
+      name="heart"
+      [style.color]="product.isFavorite ? 'red' : 'black'"
+      (click)="toggleFavorite(product)"
+      style="position: absolute; top: 10px; right: 10px; font-size: 20px;"
+    ></ion-icon>
+
+    <ion-img [src]="product.image" class="product-image"></ion-img>
+    <ion-card-header>
+      <ion-card-title class="product-title">{{ product.title }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p class="product-description">{{ product.description }}</p>
+      <p class="price">{{ product.price }}</p>
+    </ion-card-content>
+  </ion-col>
+</ion-row>
+
+
+
+<!-- Bottom Icons -->
+<div style="position: fixed; bottom: 0; left: 0; width: 100%; background-color: #fff; padding: 5px; display: flex; justify-content: space-around; border-top-left-radius: 30px; border-top-right-radius: 30px; border-top: 1px solid #ddd;">
+
+  <!--Home -->
+  <ion-button fill="clear" (click)="goToSecondPage()">
+    <ion-label style="font-family: 'Maven Pro', sans-serif; font-weight: bold; font-size: 25px; color: dark;">T.</ion-label>
+  </ion-button>
+
+  <!-- Search -->
+  <ion-button fill="clear">
+    <ion-icon name="search-outline" color="dark"></ion-icon>
+  </ion-button>
+
+
+<!--Favorites -->
+<ion-button fill="clear" (click)="goToFavouritesPage()">
+  <ion-icon name="heart-outline" color="dark"></ion-icon>
+</ion-button>
+
+
+  <!--Profile -->
+  <ion-button fill="clear">
+    <ion-icon name="person-outline" color="dark"></ion-icon>
+  </ion-button>
+
+</div>
+
+</ion-content>
+

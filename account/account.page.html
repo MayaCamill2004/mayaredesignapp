@@ -1,0 +1,39 @@
+<ion-toolbar>
+  <ion-buttons slot="start">
+    <ion-menu-button></ion-menu-button>
+  </ion-buttons>
+
+  <ion-title class="typology-title">Account</ion-title>
+
+  <ion-buttons slot="end">
+    <ion-button fill="clear" (click)="goToCartPage()">
+      <ion-icon name="cart-outline" color="dark"></ion-icon>
+    </ion-button>
+  </ion-buttons>
+</ion-toolbar>
+
+<ion-content>
+  <!--  container for the user profile -->
+  <div class="profile-image-container" (click)="fileInput.click()">
+    <input type="file" #fileInput style="display: none;" (change)="handleFileInput($event)" />
+    <div class="upload-box" *ngIf="!selectedImage">
+      <ion-icon name="cloud-upload-outline"></ion-icon>
+    </div>
+    <ion-img *ngIf="selectedImage" [src]="selectedImage" class="uploaded-image"></ion-img>
+  </div>
+
+  <!-- Account options -->
+  <div class="account-options" *ngIf="selectedImage">
+    <ion-label class="options-label">My Orders</ion-label>
+    <ion-label class="options-label">Address</ion-label>
+    <ion-label class="options-label">Change Password</ion-label>
+    <ion-label class="options-label">Payment Method</ion-label>
+
+    <!-- Sign Out button -->
+    <ion-button fill="clear" class="sign-out-button" (click)="signOut()">
+      <ion-label style="font-family: 'Maven Pro', sans-serif; font-size: 18px;">Sign Out</ion-label>
+    </ion-button>
+  </div>
+</ion-content>
+
+
