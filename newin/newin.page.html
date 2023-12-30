@@ -1,0 +1,88 @@
+<ion-content [fullscreen]="true">
+
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+        <ion-back-button defaultHref="/"></ion-back-button>
+      </ion-buttons>
+      <ion-title>NEW-IN</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+
+<ion-grid>
+  <ion-row>
+    <ion-col size="6" *ngFor="let product of products.slice(0, 2)">
+      <ion-img [src]="product.image" class="product-image"></ion-img>
+      
+      <!-- Heart icon for adding to favorites -->
+      <ion-icon 
+      [name]="product.customFavorite ? 'heart' : 'heart-outline'" 
+      color="danger" 
+      style="position: absolute; top: 10px; right: 10px; font-size: 20px;"
+      (click)="toggleFavorite(product)">
+    </ion-icon>
+
+      <ion-card-header>
+        <ion-card-title class="product-title">{{ product.title }}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <p class="product-description">{{ product.description }}</p>
+        <p class="price">{{ product.price }}</p>
+      </ion-card-content>
+    </ion-col>
+  </ion-row>
+
+  <!-- Second Row -->
+  <ion-row>
+    <ion-col size="6" *ngFor="let product of products.slice(2)">
+      <!-- Product Cards -->
+      <ion-img [src]="product.image" class="product-image"></ion-img>
+      
+      <!-- Heart icon for adding to favorites -->
+      <ion-icon 
+      [name]="product.customFavorite ? 'heart' : 'heart-outline'" 
+      color="danger" 
+      style="position: absolute; top: 10px; right: 10px; font-size: 20px;"
+      (click)="toggleFavorite(product)">
+    </ion-icon>
+
+      <ion-card-header>
+        <ion-card-title class="product-title">{{ product.title }}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <p class="product-description">{{ product.description }}</p>
+        <p class="price">{{ product.price }}</p>
+      </ion-card-content>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+
+<!-- Icons -->
+<div style="position: fixed; bottom: 0; left: 0; width: 100%; background-color: #fff; padding: 5px; display: flex; justify-content: space-around; border-top-left-radius: 30px; border-top-right-radius: 30px; border-top: 1px solid #ddd;">
+
+  <!-- Home -->
+  <ion-button fill="clear" (click)="goToSecondPage()">
+   <ion-label style="font-family: 'Maven Pro', sans-serif; font-weight: bold; font-size: 25px; color: dark;">T.</ion-label>
+ </ion-button>
+
+ <!--  Search -->
+ <ion-button fill="clear" (click)="goToSearchPage()">
+   <ion-icon name="search-outline" color="dark"></ion-icon>
+ </ion-button>
+
+<!-- Favorites -->
+<ion-button fill="clear" (click)="goToFavouritesPage()">
+ <ion-icon name="heart-outline" color="dark"></ion-icon>
+</ion-button>
+
+
+ <!-- Profile -->
+ <ion-button fill="clear">
+   <ion-icon name="person-outline" color="dark"></ion-icon>
+ </ion-button>
+
+</div>
+
+</ion-content>

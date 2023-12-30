@@ -1,0 +1,73 @@
+
+.typology-header {
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 30px; 
+  color: #000000; 
+}
+
+.login-form {
+  width: 80%; 
+  max-width: 400px; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto; 
+  margin-top: 270px; 
+
+  ion-item {
+    --ion-item-background: #f0f0f0; 
+    margin-bottom: 20px; 
+
+    ion-label {
+      color: #060606; 
+      font-family: 'Maven Pro', sans-serif; 
+    }
+
+    ion-input {
+      --padding-start: 3px;
+      --padding-end: 290px;
+      color: #fff9f9; 
+      font-family: 'Maven Pro', sans-serif; 
+    }
+  }
+
+  .logo-container {
+    display: flex;
+    justify-content: space-between;
+    width: 60%;
+    margin-bottom: 50px;
+    margin-top: 50px;
+
+    ion-img {
+      width: 60px; 
+      height: 50px;
+    }
+  }
+
+  .logo-container ion-img:last-child {
+    margin-right: -10px; 
+  }
+
+  ion-button {
+    --background: #fff; 
+    width: 130%;
+    margin-left: -33px;
+  }
+}
+
+.register-text {
+  margin-top: 60px; 
+  text-align: center; 
+}
+
+.register-text a {
+  color: #007bff; 
+}
+
+ion-input {
+  --padding-start: 3px;
+  --padding-end: 10px; 
+  color: #050505; 
+  font-family: 'Maven Pro', sans-serif; 
+}
