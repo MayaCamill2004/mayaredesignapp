@@ -239,7 +239,6 @@ export class AddressPage {
   
 
   getAddressString(): string {
-    // Implement logic to concatenate the address fields into a single string
     return `${this.address}, ${this.townCity}, ${this.postcode}, ${this.selectedCountry}`;
   }
 }

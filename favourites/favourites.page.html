@@ -72,3 +72,33 @@
   </ion-button>
 
 </div>
+
+<!-- Icons -->
+<div style="position: fixed; bottom: 0; left: 0; width: 100%; background-color: #fff; padding: 5px; display: flex; justify-content: space-around; border-top-left-radius: 30px; border-top-right-radius: 30px; border-top: 1px solid #ddd;">
+
+  <!-- Icon 1 - Home -->
+  <ion-button fill="clear" (click)="goToSecondHomePage()">
+    <ion-label style="font-family: 'Maven Pro', sans-serif; font-weight: bold; font-size: 25px; color: dark;">T.</ion-label>
+  </ion-button>
+  
+   <!-- Icon 2 - Search -->
+   <ion-button fill="clear" (click)="goToSearchPage()">
+     <ion-icon name="search-outline" color="dark"></ion-icon>
+   </ion-button>
+  
+  
+  
+  <!-- Icon 4 - Favorites -->
+  <ion-button fill="clear" (click)="goToFavouritesPage()">
+   <ion-icon name="heart-outline" color="dark"></ion-icon>
+  </ion-button>
+  
+  
+   <!-- Icon 5 - Profile -->
+   <ion-button fill="clear" (click)="goToAccountPage()">
+     <ion-icon name="person-outline" color="dark"></ion-icon>
+   </ion-button>
+  
+  </div>
+  
+  </ion-content>

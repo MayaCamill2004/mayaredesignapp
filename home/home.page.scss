@@ -6,19 +6,21 @@
   color: #000000; 
 }
 
-.login-form {
-  width: 80%; 
-  max-width: 400px; 
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 0 auto; 
-  margin-top: 270px; 
+.login-form ion-input {
+  --padding-start: 3px;
+  --padding-end: 10px;
+  --padding-bottom: 10px;  
+  color: #050505;
+  font-family: 'Maven Pro', sans-serif;
+}
+
 
   ion-item {
-    --ion-item-background: #f0f0f0; 
-    margin-bottom: 20px; 
-
+    margin-bottom: 40px;
+    background-color: #070606;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
     ion-label {
       color: #060606; 
       font-family: 'Maven Pro', sans-serif; 
@@ -27,34 +29,48 @@
     ion-input {
       --padding-start: 3px;
       --padding-end: 290px;
-      color: #fff9f9; 
+      color: #000000; 
       font-family: 'Maven Pro', sans-serif; 
     }
-  }
+  
 
-  .logo-container {
-    display: flex;
-    justify-content: space-between;
-    width: 60%;
-    margin-bottom: 50px;
-    margin-top: 50px;
 
-    ion-img {
-      width: 60px; 
-      height: 50px;
+//.logo-container {
+ // display: flex;
+ // justify-content: space-between;
+ // width: 80%;
+//  margin-bottom: 50px;
+ // margin-top: 50px;
+//}
+
+//.logo-container ion-img {
+//  width: 60px;
+ // height: 50px;
+  //margin-right: 8px;
+//}
+
+
+//.logo-container ion-img:last-child {
+ // margin-right: -60px;
+//}
+
+    
+    .login-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 70%; 
+      margin: 0 auto;
+    
+      ion-button {
+        --background: #fff;
+        width: 100%; 
+        margin: 1px 0; 
+        color: #050505;
+      }
     }
-  }
+    
 
-  .logo-container ion-img:last-child {
-    margin-right: -10px; 
-  }
-
-  ion-button {
-    --background: #fff; 
-    width: 130%;
-    margin-left: -33px;
-  }
-}
 
 .register-text {
   margin-top: 60px; 

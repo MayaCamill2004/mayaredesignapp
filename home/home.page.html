@@ -1,40 +1,63 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Typology.</ion-title>
+      <ion-title size="large" class="typology-title" style="margin-left: 110px;">Typology.</ion-title>
     </ion-toolbar>
   </ion-header>
+
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
 
   <ion-content class="ion-padding login-content">
     <div class="typology-header">
       <h1>Login</h1>
     </div>
 
-    <div class="login-form">
-      <ion-item>
+
+    <div class="login-form" style="margin-top: 20px;">
+      <ion-item style="margin-bottom: 20px;">
         <ion-label position="stacked">Email</ion-label>
-        <ion-input type="email"></ion-input>
+        <ion-input type="email" [(ngModel)]="email" style="width: 100%;"></ion-input>
       </ion-item>
 
-      <ion-item>
+      <ion-item style="margin-bottom: 20px;">
         <ion-label position="stacked">Password</ion-label>
-        <ion-input type="password"></ion-input>
+        <ion-input type="password" [(ngModel)]="password" style="width: 100%;"></ion-input>
       </ion-item>
-      <div class="logo-container">
-        <ion-img class="logo-icon" src="https://upload.wikimedia.org/wikipedia/commons/6/6c/Facebook_Logo_2023.png"></ion-img>
-        <ion-img class="logo-icon" src="https://thesustainableangle.org/wp-content/uploads/2015/01/Stunning-Instagram-Logo-Vector-Free-Download-43-For-New-Logo-with-Instagram-Logo-Vector-Free-Download-1-1024x1024.png"></ion-img>
-      </div>
-      
-      <div class="login-box">
-        <ion-button expand="full" color="primary">Login</ion-button>
-      <ion-button expand="full" color="secondary" routerLink="/register">Create New Account</ion-button>
 
-      
-      <div class="register-text">
-        <p>Don't have an account? <a routerLink="/home">Sign Up</a></p>
-      </div>
-    </div>
+      <!-- Error message for empty fields -->
+      <div *ngIf="!email || !password" style="color: red;">Please enter both email and password.</div>
 
-    </div>
-  </ion-content>
-</ion-content>
+     <!--
+<div class="logo-container">
+  <ion-img class="logo-icon" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Facebook_icon_%28black%29.svg/2048px-Facebook_icon_%28black%29.svg.png"></ion-img>
+  <ion-img class="logo-icon" src="https://i.pinimg.com/originals/63/9b/3d/639b3dafb544d6f061fcddd2d6686ddb.png" style="width: 75px; height: 60px; margin-top: -6px;"></ion-img>
+</div>
+-->
+
+      <br>
+      <br>
+      <br>
+      <br>
+
+      <br>
+      <br>
+
+
+
+
+<div class="login-box">
+  <ion-button expand="full" color="primary" (click)="loginAndNavigate()" [disabled]="!email || !password">Login</ion-button>
+  <ion-button expand="full" color="primary" routerLink="/register">Create New Account</ion-button>
+
+  <div class="register-text">
+    <p>Don't have an account? <a routerLink="/home">Sign Up</a></p>
+  </div>
+</div>
+
+
+

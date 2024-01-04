@@ -7,8 +7,8 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { FavoriteService } from './favorite.service';
-import { FormsModule } from '@angular/forms'; // Add this line to import FormsModule
-import { PaymentmethodPage } from './paymentmethod/paymentmethod.page'; // Import your PaymentmethodPage
+import { FormsModule } from '@angular/forms'; 
+import { PaymentmethodPage } from './paymentmethod/paymentmethod.page'; 
 
 @NgModule({
   declarations: [AppComponent],

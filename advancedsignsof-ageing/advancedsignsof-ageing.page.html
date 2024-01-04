@@ -1,11 +1,11 @@
 <ion-toolbar>
   <ion-buttons slot="start">
     <ion-menu-button></ion-menu-button>
-    
+    <ion-menu-button></ion-menu-button>
     <ion-back-button defaultHref="/"></ion-back-button>
   </ion-buttons>
 
-  <ion-title class="typology-title">FACE-SERUM</ion-title>
+  <ion-title class="typology-title">ADVANCED SIGNS OF AGEING</ion-title>
 
   <ion-buttons slot="end">
     <ion-button fill="clear" (click)="goToCartPage()">
@@ -15,7 +15,8 @@
 </ion-toolbar>
 
 <ion-content class="ion-padding">
-  <!-- Product Grid -->
+  
+  
   <ion-grid>
     <ion-row *ngFor="let product of products; let i = index">
       <ion-col size="6" *ngIf="i % 1 === 0">
@@ -51,6 +52,12 @@
     </ion-row>
   </ion-grid>
   
+  
+    
+        
+    
+    
+    
 
   <!-- Bottom Icons -->
   <div style="position: fixed; bottom: 0; left: 0; width: 100%; background-color: #fff; padding: 5px; display: flex; justify-content: space-around; border-top-left-radius: 30px; border-top-right-radius: 30px; border-top: 1px solid #ddd;">
@@ -78,3 +85,4 @@
 
   </div>
 </ion-content>
+

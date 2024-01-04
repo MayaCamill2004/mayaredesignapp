@@ -16,6 +16,18 @@ export class FavouritesPage {
   ionViewDidEnter() {
     this.favorites = this.favoriteService.getFavorites();
   }
+ 
+  goToFavouritesPage(): void {
+    this.navCtrl.navigateForward('/favourites');
+  }
+
+  goToSearchPage(): void {
+    this.navCtrl.navigateForward('/search');
+  }
+
+  goToAccountPage(): void {
+    this.navCtrl.navigateForward('/account');
+  }
 
   goToSecondHomePage(): void {
     this.navCtrl.navigateBack('/secondhome');
