@@ -3,7 +3,6 @@ import { NavController } from '@ionic/angular';
 import { Router, NavigationExtras } from '@angular/router';
 import { CartService } from '../cart.service'; 
 
-// Define the Product type
 interface Product {
   id: number;
   name: string;
@@ -60,8 +59,8 @@ export class TwoPage implements OnInit {
     const reviewsSectionElement = this.reviewsSection.nativeElement as HTMLElement;
     reviewsSectionElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
-  goToSecondHomePage(): void {
-    this.navCtrl.navigateBack('/secondhome');
+  goToHomePage() {
+    this.navCtrl.navigateForward('/home');
   }
 
   goToFavouritesPage(): void {
@@ -77,3 +76,4 @@ export class TwoPage implements OnInit {
   }
 
 }
+

@@ -1,96 +1,71 @@
-
 <ion-toolbar>
   <ion-buttons slot="start">
     <ion-menu-button></ion-menu-button>
+    
+    <ion-back-button defaultHref="/"></ion-back-button>
   </ion-buttons>
 
+  
   <ion-title class="typology-title">TRENDING</ion-title>
-
   <ion-buttons slot="end">
+    <!-- Cart button -->
     <ion-button fill="clear" (click)="goToCartPage()">
       <ion-icon name="cart-outline" color="dark"></ion-icon>
     </ion-button>
   </ion-buttons>
 </ion-toolbar>
 
-
-<ion-content class="ion-padding">
-
-
-<ion-select interface="popover" style="border: none; margin-left: auto; background: none; --ion-select-arrow-color: transparent;" (ionChange)="onSortChange($event)">
-  <ion-select-option value="recentlyAdded">Low to high</ion-select-option>
-  <ion-select-option value="Expiring soonest">High to low</ion-select-option>
-</ion-select>
-
-
-
-<ion-grid>
-  <ion-row *ngFor="let product of products; let i = index">
-    <ion-col size="6" *ngIf="i % 1 === 0">
-      <img [src]="products[i].image" alt="{{ products[i].title }}" style="width: 100%; height: 200px; object-fit: cover;">
-      <ion-label class="robot-mono-text" style="margin-top: 10px; font-size: 13px;">{{ products[i].title }}</ion-label>
-      <br>
-      <ion-label class="robot-mono-text" style="color: rgb(0, 0, 0); font-size: 11px;">{{ products[i].price }}</ion-label>
-      <!-- Heart icon -->
-      <ion-icon
-        name="heart"
-        [style.color]="products[i].isLiked ? 'red' : 'black'"
-        (click)="addToFavorites(products[i])"
-        style="position: absolute; top: 10px; right: 10px;">
-      </ion-icon>
-    </ion-col>
+<ion-content>
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col size="6" *ngFor="let product of products" class="product-col">
+        <div class="product-card" (click)="navigateToProductDetail(product)">
+          <ion-img [src]="product.image" alt="Product image" class="product-image"></ion-img>
+          <div class="product-details">
+            <ion-card-title class="typology-title">{{ product.title }}</ion-card-title>
+            <p class="description">{{ product.description }}</p>
+            <div class="price-and-favorite">
+              <ion-note class="price">{{ product.price }}</ion-note>
+              <ion-button fill="clear" class="favorite-button" (click)="toggleFavorite(product); $event.stopPropagation();">
+                <ion-icon 
+                slot="icon-only" 
+                name="{{ product.isFavorite ? 'heart' : 'heart-outline' }}" 
+                [color]="product.isFavorite ? 'danger' : 'medium'">
+              </ion-icon>
+              </ion-button>
+            </div>
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
 
 
+  <!--  Icons -->
+  <div style="position: fixed; bottom: 0; left: 0; width: 100%; background-color: #fff; padding: 5px; display: flex; justify-content: space-around; border-top-left-radius: 30px; border-top-right-radius: 30px; border-top: 1px solid #ddd;">
 
-    <ion-col size="6" *ngIf="i + 1 < products.length">
-      <img [src]="products[i + 1].image" alt="{{ products[i + 1].title }}" style="width: 100%; height: 200px; object-fit: cover;">
-      <ion-label class="robot-mono-text" style="margin-top: 10px; font-size: 13px;">{{ products[i + 1].title }}</ion-label>
-      <br>
-      <ion-label class="robot-mono-text" style="color: rgb(0, 0, 0); font-size: 11px;">{{ products[i + 1].price }}</ion-label>
-      <!-- Heart icon -->
-      <ion-icon
-        name="heart"
-        [style.color]="products[i + 1].isLiked ? 'red' : 'black'"
-        (click)="toggleLike(i + 1)"
-        style="position: absolute; top: 10px; right: 10px;">
-      </ion-icon>
-    </ion-col>
-  </ion-row>
-</ion-grid>
+    <!-- Home -->
+    <ion-button fill="clear" (click)="goToHomePage()">
+      <ion-label style="font-family: 'Maven Pro', sans-serif; font-weight: bold; font-size: 25px; color: dark;">T.</ion-label>
+    </ion-button>
 
+    <!--  Search -->
+    <ion-button fill="clear"(click)="goToSearchPage()">
+      <ion-icon name="search-outline" color="dark"></ion-icon>
+    </ion-button>
 
-  
-      
-  
-  
-  
-<!-- Icons -->
-<div style="position: fixed; bottom: 0; left: 0; width: 100%; background-color: #fff; padding: 5px; display: flex; justify-content: space-around; border-top-left-radius: 30px; border-top-right-radius: 30px; border-top: 1px solid #ddd;">
+    <!-- Favorites -->
+    <ion-button fill="clear" (click)="goToFavouritesPage()">
+      <ion-icon name="heart-outline" color="dark"></ion-icon>
+    </ion-button>
+    
 
-<!-- Icon 1 - Home -->
-<ion-button fill="clear" (click)="goToSecondHomePage()">
-  <ion-label style="font-family: 'Maven Pro', sans-serif; font-weight: bold; font-size: 25px; color: dark;">T.</ion-label>
-</ion-button>
+    <!-- Profile -->
+    <ion-button fill="clear" (click)="goToAccountPage()">
+      <ion-icon name="person-outline" color="dark"></ion-icon>
+    </ion-button>
 
- <!-- Icon 2 - Search -->
- <ion-button fill="clear" (click)="goToSearchPage()">
-   <ion-icon name="search-outline" color="dark"></ion-icon>
- </ion-button>
-
-
-
-<!-- Icon 4 - Favorites -->
-<ion-button fill="clear" (click)="goToFavouritesPage()">
- <ion-icon name="heart-outline" color="dark"></ion-icon>
-</ion-button>
-
-
- <!-- Icon 5 - Profile -->
- <ion-button fill="clear" (click)="goToAccountPage()">
-   <ion-icon name="person-outline" color="dark"></ion-icon>
- </ion-button>
-
-</div>
-
+  </div>
 </ion-content>
+

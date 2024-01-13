@@ -1,13 +1,16 @@
 
-import { Component } from '@angular/core';
+
+import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { FavoriteService } from '../favorite.service';
+import { Router } from '@angular/router';
 
 interface Product {
   image: string;
   title: string;
+  description: string;
   price: string;
-  isLiked: boolean;
+  isFavorite: boolean; 
 }
 
 @Component({
@@ -15,68 +18,57 @@ interface Product {
   templateUrl: './trending.page.html',
   styleUrls: ['./trending.page.scss'],
 })
-export class TrendingPage {
+export class TrendingPage implements OnInit {
   products: Product[] = [
-    { image: 'assets/softtint.png', title: 'Soft Tint', price: '$20.99', isLiked: false },
-    { image: 'assets/duo.png', title: 'Duo Product', price: '$25.99', isLiked: false },
-    { image: 'assets/instantduo.png', title: 'Third Product', price: '$19.99', isLiked: false },
-    { image: 'assets/tintedcomplexion.png', title: 'Fourth Product', price: '$22.99', isLiked: false },
-    { image: 'assets/two.png', title: 'Fifth Product', price: '$24.99', isLiked: false },
-    { image: 'assets/three.png', title: 'Sixth Product', price: '$27.99', isLiked: false },
-  ];
 
-  constructor(private navCtrl: NavController, private favoriteService: FavoriteService) {}
-
-  addToFavorites(product: Product): void {
-    this.favoriteService.addToFavorites(product);
-  }
-
-  toggleLike(index: number): void {
-    const product = this.products[index];
-    product.isLiked = !product.isLiked;
-
-    if (product.isLiked) {
-      this.favoriteService.addToFavorites(product);
-    } else {
-      this.favoriteService.removeFromFavorites(product);
+    { image: 'assets/Tinted Care.png', title: 'Tinted Care Gift Set', description: 'A routine of tinted care for skin, lips, and lashes. Includes four bestselling formulations.', price: '€83.50',isFavorite: false},
+    { image: 'assets/Travel kit.png', title: 'Travel kit', description: 'Five travel-size products for a complete face care routine.', price: ' €80.90' ,isFavorite: false},
+    { image: 'assets/Periodic serums.png', title: 'Periodic serums', description: 'A set of four serums to meet the complex needs..', price: '€51.90', isFavorite: false },
+    { image: 'assets/Antioxidant Trio.png', title: 'Antioxidant Trio', description: ' Our skin is constantly exposed to free radicals.', price: '€84.90' ,isFavorite: false},
+    ];
+    favorites: any[] = [];
+    constructor(
+      private navCtrl: NavController,
+      private favoriteService: FavoriteService,
+      private router: Router 
+    ) {}
+  
+  
+  
+    ngOnInit() {}
+    navigateToProductDetail(product: any) {
+      this.router.navigateByUrl(`/product-detail/${product.title.toLowerCase().split(' ').join('-')}`, {
+        state: { product }
+      });
+    }
+  
+    goToHomePage() {
+      this.navCtrl.navigateForward('/home');
+    }
+  
+    goToFavouritesPage(): void {
+      this.navCtrl.navigateForward('/favourites');
+    }
+  
+    goToCartPage() {
+      this.navCtrl.navigateForward('/cart'); 
+    }
+    
+    goToAccountPage() {
+      this.navCtrl.navigateForward('/account'); 
+    }
+    goToSearchPage() {
+      this.navCtrl.navigateForward('/search'); 
+    }
+  
+    toggleFavorite(product: any) {
+      product.isFavorite = !product.isFavorite;
+      if (product.isFavorite) {
+        this.favoriteService.addToFavorites(product);
+      } else {
+        this.favoriteService.removeFromFavorites(product);
+      }
     }
   }
-
-  goToSecondHomePage(): void {
-    this.navCtrl.navigateBack('/secondhome');
-  }
-
-  goToFavouritesPage(): void {
-    this.navCtrl.navigateForward('/favourites');
-  }
-
-  goToSearchPage(): void {
-    this.navCtrl.navigateForward('/search');
-  }
-
-
-  goToAccountPage(): void {
-    this.navCtrl.navigateForward('/account');
-  }
-  goToCartPage() {
-    this.navCtrl.navigateForward('/cart'); 
-  }
-
-
-  sortProductsLowToHigh(): void {
-    this.products.sort((a, b) => parseFloat(a.price.slice(1)) - parseFloat(b.price.slice(1)));
-  }
-
-  sortProductsHighToLow(): void {
-    this.products.sort((a, b) => parseFloat(b.price.slice(1)) - parseFloat(a.price.slice(1)));
-  }
-
-  onSortChange(event: CustomEvent): void {
-    const selectedSort = event.detail.value;
-    if (selectedSort === 'recentlyAdded') {
-      this.sortProductsLowToHigh();
-    } else if (selectedSort === 'Expiring soonest') {
-      this.sortProductsHighToLow();
-    }
-  }
-}
+  
+  
