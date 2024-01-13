@@ -1,9 +1,46 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button defaultHref="/face-care"></ion-back-button>
-    </ion-buttons>
+<ion-toolbar>
+  <ion-buttons slot="start">
+    <ion-menu-button></ion-menu-button>
+    
+    <ion-back-button defaultHref="/"></ion-back-button>
+  </ion-buttons>
 
-    <ion-title class="maven-pro-title">NIGHT-CARE</ion-title>
-  </ion-toolbar>
-</ion-header>
+  <ion-title class="typology-title">NIGHT-CARE</ion-title>
+
+  <ion-buttons slot="end">
+    <ion-button fill="clear" (click)="goToCartPage()">
+      <ion-icon name="cart-outline" color="dark"></ion-icon>
+    </ion-button>
+  </ion-buttons>
+</ion-toolbar>
+
+<ion-content class="ion-padding">
+
+  <ion-toolbar>
+
+
+  <!-- Icons -->
+  <div style="position: fixed; bottom: 0; left: 0; width: 100%; background-color: #fff; padding: 5px; display: flex; justify-content: space-around; border-top-left-radius: 30px; border-top-right-radius: 30px; border-top: 1px solid #ddd;">
+
+    <!-- Home -->
+    <ion-button fill="clear" (click)="goToHomePage()">
+      <ion-label style="font-family: 'Maven Pro', sans-serif; font-weight: bold; font-size: 25px; color: dark;">T.</ion-label>
+    </ion-button>
+
+    <!--  Search -->
+    <ion-button fill="clear">
+      <ion-icon name="search-outline" color="dark"></ion-icon>
+    </ion-button>
+
+    <!-- Favorites -->
+    <ion-button fill="clear" (click)="goToFavouritesPage()">
+      <ion-icon name="heart-outline" color="dark"></ion-icon>
+    </ion-button>
+    
+
+    <!-- Profile -->
+    <ion-button fill="clear">
+      <ion-icon name="person-outline" color="dark"></ion-icon>
+    </ion-button>
+
+  </div>

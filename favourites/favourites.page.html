@@ -11,7 +11,7 @@
 <ion-content class="ion-padding">
 
   <!-- Back button to navigate to the home page -->
-  <ion-button fill="clear" (click)="goToSecondHomePage()">
+  <ion-button fill="clear" (click)="goToHomePage()">
     <ion-icon name="arrow-back" color="dark"></ion-icon>
   </ion-button>
 
@@ -30,7 +30,7 @@
             <!-- Button under the image, title, and text -->
             <ion-row>
               <!-- Move to Bag button -->
-              <ion-button expand="full" color="primary" (click)="moveToBag(fav)">Move to Bag</ion-button>
+              <ion-button expand="full" color="primary" (click)="moveToBag(fav)">Add to cart</ion-button>
 
               <!-- Delete button -->
               <ion-button expand="full" color="primary" (click)="deleteFromFavorites(fav)">Delete</ion-button>
@@ -52,7 +52,7 @@
 <div style="position: fixed; bottom: 0; left: 0; width: 100%; background-color: #fff; padding: 5px; display: flex; justify-content: space-around; border-top-left-radius: 30px; border-top-right-radius: 30px; border-top: 1px solid #ddd;">
 
   <!-- Home -->
-  <ion-button fill="clear" (click)="goToSecondHomePage()">
+  <ion-button fill="clear" (click)="goToHomePage()">
     <ion-label style="font-family: 'Maven Pro', sans-serif; font-weight: bold; font-size: 25px; color: dark;">T.</ion-label>
   </ion-button>
 
@@ -77,7 +77,7 @@
 <div style="position: fixed; bottom: 0; left: 0; width: 100%; background-color: #fff; padding: 5px; display: flex; justify-content: space-around; border-top-left-radius: 30px; border-top-right-radius: 30px; border-top: 1px solid #ddd;">
 
   <!-- Icon 1 - Home -->
-  <ion-button fill="clear" (click)="goToSecondHomePage()">
+  <ion-button fill="clear" (click)="goToHomePage()">
     <ion-label style="font-family: 'Maven Pro', sans-serif; font-weight: bold; font-size: 25px; color: dark;">T.</ion-label>
   </ion-button>
   

@@ -69,10 +69,9 @@ export class MoisturizersPage {
     }
   }
 
-  goToSecondPage() {
-    this.navCtrl.navigateForward('/secondhome');
+  goToHomePage() {
+    this.navCtrl.navigateForward('/home');
   }
-
   goToFavouritesPage(): void {
     this.navCtrl.navigateForward('/favourites');
   }
@@ -114,13 +113,13 @@ export class MoisturizersPage {
 
   sortProducts() {
     if (this.selectedSortOption === 'recentlyAdded') {
-      // Sort by recently added logic (you can customize this if needed)
+     
       this.products.sort((a, b) => a.title.localeCompare(b.title));
     } else if (this.selectedSortOption === 'Low to high') {
-      // Sort by low to high price logic
+   
       this.products.sort((a, b) => Number(a.price) - Number(b.price));
     } else if (this.selectedSortOption === 'High to low') {
-      // Sort by high to low price logic
+  
       this.products.sort((a, b) => Number(b.price) - Number(a.price));
     }
   }

@@ -1,3 +1,4 @@
+
 import { Component } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { FavoriteService, Product } from '../favorite.service';
@@ -8,7 +9,9 @@ import { CartService } from '../cart.service';
   templateUrl: './favourites.page.html',
   styleUrls: ['./favourites.page.scss'],
 })
-export class FavouritesPage {
+export class FavouritesPage  {
+
+
   favorites: Product[] = [];
 
   constructor(private navCtrl: NavController, private favoriteService: FavoriteService, private cartService: CartService) {}
@@ -29,8 +32,8 @@ export class FavouritesPage {
     this.navCtrl.navigateForward('/account');
   }
 
-  goToSecondHomePage(): void {
-    this.navCtrl.navigateBack('/secondhome');
+  goToHomePage() {
+    this.navCtrl.navigateForward('/home');
   }
 
   deleteFromFavorites(item: Product): void {
@@ -53,3 +56,4 @@ export class FavouritesPage {
     });
   }
 }
+

@@ -58,8 +58,8 @@ export class HydratingserumPage implements OnInit {
     const reviewsSectionElement = this.reviewsSection.nativeElement as HTMLElement;
     reviewsSectionElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
-  goToSecondHomePage(): void {
-    this.navCtrl.navigateBack('/secondhome');
+  goToHomePage() {
+    this.navCtrl.navigateForward('/home');
   }
 
   goToFavouritesPage(): void {
@@ -75,3 +75,4 @@ export class HydratingserumPage implements OnInit {
   }
 
 }
+

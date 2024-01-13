@@ -1,108 +1,87 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
+import { FavoriteService } from '../favorite.service';
+import { Router } from '@angular/router';
 
 interface Product {
-  title: string;
   image: string;
+  title: string;
   description: string;
   price: string;
+  isFavorite: boolean; 
 }
-
 @Component({
   selector: 'app-newin',
   templateUrl: 'newin.page.html',
   styleUrls: ['newin.page.scss'],
 })
-export class NewinPage {
-  products: (Product & { customFavorite?: boolean })[] = [
-    {
-      title: 'Purifying Treatment Shampoo ',
-      image: 'assets/shampoo.png',
-      description: 'with 1% Zinc Gluconate + Nettle Extract',
-      price: '€19.99',
-    },
-    {
-      title: 'Hydrating Cleansing Bar With Palmarosa',
-      image: 'assets/bar.png',
-      description: 'A hydrating face and body soap with 8% fatty acids.',
-      price: '€24.99',
-     
-    },
-    
-    {
-      title: 'Tinted Concealer',
-      image: 'assets/tinte.png',
-      description: 'Medium high coverage - Natural finish',
-      price: '€15.99',
-   
-    },
-    {
-      title: 'Exfoliating and Fortifying Haircare Duo',
-      image: 'assets/haircare.png',
-      description: 'Help maintain a healthy, balanced scalp and fortified hair follicles',
-      price: '€15.99',
-     
-    },
-    {
-      title: 'Rebalancing Cleansing Bar With Nettle',
-      image: 'assets/green.png',
-      description: 'An oil-regulating face and body soap with 8% fatty acids.',
-      price: '€15.99',
-      
-    },
-    {
-      title: 'SPF 50 Body Sunscreen ',
-      image: 'assets/suncare.png',
-      description: ' with Aloe Vera ',
-      price: '€15.99',
-      
-    },
-    
-  ];
+export class NewinPage implements OnInit {
+  products: Product[] = [
 
-  constructor(private navCtrl: NavController) {}
-
-  navigateTo(pagePath: string): void {
-    this.navCtrl.navigateForward(pagePath);
-  }
-
-  toggleFavorite(product: Product): void {
-    const index = this.products.findIndex(p => p.title === product.title);
-
-    if (index !== -1) {
-      // Toggle the customFavorite property
-      this.products[index].customFavorite = !this.products[index].customFavorite;
+    { image: 'assets/Hydratingserum.png', title: 'Hydrating Serum', description: 'with 11% Vitamin C', price: '€15.90' ,isFavorite: false},
+    { image: 'assets/RadianceSerum.png', title: 'Radiance Serum', description: 'with 3% Hyaluronic Acid + 2% B5 ', price: '€15.50', isFavorite: false},
+    { image: 'assets/tannedcomplecionserum.png', title: 'Tanned complexion serum', description: 'Botanical blend with buriti', price: '€24.90' ,isFavorite: false},
+    { image: 'assets/threeserums.png', title: 'Trio of serums', description: 'Dry skin', price: '€51.00', isFavorite: false},
+    { image: 'assets/trio.png', title: 'The TEN Essentials Trio', description: 'TEN essentials ', price: '€49.40', isFavorite: false},
+    { image: 'assets/nightcare2.png', title: 'Botanical Blend for Sensitive Skin', description: 'with 650 mg CBD ', price: '€41.90',isFavorite: false },
+    { image: 'assets/nightcare3.png', title: 'Firming night mask', description: 'with organic prickly pear oil ', price: '€36.50' ,isFavorite: false},
+    { image: 'assets/nightcare4.png', title: 'Tanned complexion serum', description: ' Botanical blend with buriti ', price: 'from €24.90', isFavorite: false},
+    { image: 'assets/duo.png', title: 'Tinted duo', description: 'with 650 mg CBD ', price: '€41.90' ,isFavorite: false},
+    { image: 'assets/instantduo.png', title: 'The Tinted Glow Duo ', description: 'Tint and illuminate. ', price: ' €52.40', isFavorite: false },
+    { image: 'assets/softtint.png', title: 'Tanned complexion serum', description: ' Botanical blend with buriti ', price: 'from €24.90', isFavorite: false },
+  
+    ];
+    favorites: any[] = [];
+    constructor(
+      private navCtrl: NavController,
+      private favoriteService: FavoriteService,
+      private router: Router // Inject the Router service
+    ) {}
+  
+  
+  
+    ngOnInit() {}
+    navigateToProductDetail(product: any) {
+      this.router.navigateByUrl(`/product-detail/${product.title.toLowerCase().split(' ').join('-')}`, {
+        state: { product }
+      });
     }
+  
+    goToHomePage() {
+      this.navCtrl.navigateForward('/home');
+    }
+  
+    goToFavouritesPage(): void {
+      this.navCtrl.navigateForward('/favourites');
+    }
+  
+    goToCartPage() {
+      this.navCtrl.navigateForward('/cart'); 
+    }
+    
+    goToAccountPage() {
+      this.navCtrl.navigateForward('/account'); 
+    }
+    goToSearchPage() {
+      this.navCtrl.navigateForward('/search'); 
+    }
+  
+    toggleFavorite(product: any) {
+      product.isFavorite = !product.isFavorite;
+      if (product.isFavorite) {
+        this.favoriteService.addToFavorites(product);
+      } else {
+        this.favoriteService.removeFromFavorites(product);
+      }
+    }
+    sortLowToHigh() {
+      this.products.sort((a, b) => parseFloat(a.price.replace('€', '')) - parseFloat(b.price.replace('€', '')));
+    }
+    
+    sortHighToLow() {
+      this.products.sort((a, b) => parseFloat(b.price.replace('€', '')) - parseFloat(a.price.replace('€', '')));
+    }
+    
   }
-
-  goToProductDetailsPage(productId: string) {
-   
-    console.log(`Navigating to product details page for ${productId}`);
-  }
-
-  goToSecondPage() {
-    this.navigateTo('/secondhome');
-  }
-
-  goToFavouritesPage() {
-    this.navigateTo('/favourites');
-  }
-
-  navigateToTintedCare() {
-    this.navigateTo('/tintedcare');
-  }
-
-  navigateToFaceCare() {
-    this.navigateTo('/facecare');
-  }
-
-  goToSearchPage() {
-    this.navigateTo('/search');
-  }
-
- 
-  goToCartPage() {
-    this.navigateTo('/cart'); 
-  }
- 
-}
+  
+  

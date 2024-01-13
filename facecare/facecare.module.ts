@@ -4,17 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { FaceCarePageRoutingModule } from './facecare-routing.module';
+import { FacecarePageRoutingModule } from './facecare-routing.module';
 
-import { FaceCarePage } from './facecare.page';
+import { FacecarePage } from './facecare.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    FaceCarePageRoutingModule
+    FacecarePageRoutingModule
   ],
-  declarations: [FaceCarePage]
+  declarations: [FacecarePage]
 })
-export class FaceCarePageModule {}
+export class FacecarePageModule {}

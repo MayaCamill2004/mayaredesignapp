@@ -49,3 +49,4 @@ export class DuoPage implements OnInit {
     reviewsSectionElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 }
+

@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { IonRouterOutlet } from '@ionic/angular'; // Correct import
-
-
+import { IonRouterOutlet } from '@ionic/angular';
 
 @Component({
   selector: 'app-paymentmethod',
@@ -19,11 +17,22 @@ export class PaymentmethodPage {
 
   constructor(private router: Router, private ionRouterOutlet: IonRouterOutlet) {}
 
-
   useCard() {
     console.log('Card details submitted:', this.cardTitle, this.cardNumber, this.expiryMonth, this.expiryYear, this.cardHolderName, this.cvv);
 
-    
-    this.ionRouterOutlet.pop(); 
+    // Save the payment details as the default payment
+    const defaultPayment = {
+      cardTitle: this.cardTitle,
+      cardNumber: this.cardNumber,
+      expiryMonth: this.expiryMonth,
+      expiryYear: this.expiryYear,
+      cardHolderName: this.cardHolderName,
+      cvv: this.cvv,
+    };
+    localStorage.setItem('defaultPayment', JSON.stringify(defaultPayment));
+
+    // Navigate to the account page
+    this.router.navigate(['/checkoutm']);
   }
+  
 }
