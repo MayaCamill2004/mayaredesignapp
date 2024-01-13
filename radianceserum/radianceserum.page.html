@@ -1,0 +1,237 @@
+<!-- Your existing toolbar -->
+<ion-toolbar>
+  <ion-buttons slot="start">
+    <ion-menu-button></ion-menu-button>
+    <ion-menu-button></ion-menu-button>
+    <ion-back-button defaultHref="/"></ion-back-button>
+  </ion-buttons>
+
+  <ion-title class="typology-title">TYPOLOGY.</ion-title>
+
+  <ion-buttons slot="end">
+    <ion-button fill="clear" (click)="goToCartPage()">
+      <ion-icon name="cart-outline" color="dark"></ion-icon>
+    </ion-button>
+  </ion-buttons>
+</ion-toolbar>
+
+<!-- Image with content -->
+<ion-content class="ion-padding">
+  <div style="position: relative; text-align: left; color: black;">
+    <img
+      alt="typology tients"
+      src="assets/tannedcomplecionserum.png"
+      style="width: 100%; height: 390px;"
+    />
+    
+    <p class="maven-pro-description">
+      LAB-1007 15 ml
+    </p>
+  
+    <h2 class="maven-pro-title">
+      P31 Tanned complexion serum
+      Botanical blend with buriti</h2>
+<!-- Rating stars and review text with link -->
+<div class="rating-container">
+  <ion-icon name="star" class="star"></ion-icon>
+  <ion-icon name="star" class="star"></ion-icon>
+  <ion-icon name="star" class="star"></ion-icon>
+  <ion-icon name="star" class="star"></ion-icon>
+  <ion-icon name="star-half" class="star"></ion-icon>
+  <a href="#reviews-section" class="review-link">10 Reviews</a>
+</div>
+
+    <!-- Price -->
+    <p class="maven-pro-price"> €42.90</p>
+
+<!-- Add to Bag button -->
+<ion-button expand="full" class="add-to-bag-button" (click)="addToBag()">
+  Add to Bag
+</ion-button>
+
+<p class="product-description roboto-mono-font">
+  A concentrated serum rich in plant-based keratin and hyaluronic acid to soften hands, nourish cuticles, and strengthen brittle nails.
+
+93% naturally derived. Vegan. Made in France.
+<br>
+<br>
+Combat the effects of free-radical damage with the concentrated vitamin C Radiance serum. Give your skin light coverage and a smooth, no-makeup finish with the Tinted Serum. Two essentials for natural radiance.
+</p>
+  </div>
+
+
+<!-- Reviews Section -->
+<div id="reviews-section" #reviewsSection class="reviews-section">
+  <!-- Review 1 -->
+  <div class="review-item">
+    <p class="reviewer-name maven-pro-font">John Doe</p>
+  <!-- Rating stars and review text with anchor link -->
+<div class="rating-container">
+  <ion-icon name="star" class="star"></ion-icon>
+  <ion-icon name="star" class="star"></ion-icon>
+  <ion-icon name="star" class="star"></ion-icon>
+  <ion-icon name="star" class="star"></ion-icon>
+  <ion-icon name="star-half" class="star"></ion-icon>
+  <ion-anchor [routerLink]="['/instantduo']" fragment="reviews-section" class="review-link">10 Reviews</ion-anchor>
+</div>
+
+    <p class="review-text">
+      This product is amazing! It really made a difference in my skincare routine.
+    </p>
+  </div>
+
+  <!-- Review 2 -->
+  <div class="review-item">
+    <p class="reviewer-name maven-pro-font">Jane Smith</p>
+    <div class="rating-container">
+      <ion-icon name="star" class="star"></ion-icon>
+      <ion-icon name="star" class="star"></ion-icon>
+      <ion-icon name="star" class="star"></ion-icon>
+      <ion-icon name="star" class="star"></ion-icon>
+      <ion-icon name="star" class="star"></ion-icon>
+      <ion-anchor [routerLink]="['/instantduo']" fragment="reviews-section" class="review-link">10 Reviews</ion-anchor>
+    </div>
+    <p class="review-text">
+      I love the glow these drops give me! Definitely a must-have in my beauty routine.
+    </p>
+  </div>
+
+  <!-- Review 3 -->
+  <div class="review-item">
+    <p class="reviewer-name maven-pro-font">Ella Smith</p>
+    <div class="rating-container">
+      <ion-icon name="star" class="star"></ion-icon>
+      <ion-icon name="star" class="star"></ion-icon>
+      <ion-icon name="star" class="star"></ion-icon>
+      <ion-icon name="star" class="star"></ion-icon>
+      <ion-icon name="star" class="star"></ion-icon>
+      <ion-anchor [routerLink]="['/instantduo']" fragment="reviews-section" class="review-link">10 Reviews</ion-anchor>
+    </div>
+    <p class="review-text">
+      I love the glow these drops give me! Definitely a must-have in my beauty routine.
+    </p>
+  </div>
+</div>
+
+<!-- Review 4 -->
+<div class="review-item">
+  <p class="reviewer-name maven-pro-font">Jane Ronad</p>
+  <div class="rating-container">
+    <ion-icon name="star" class="star"></ion-icon>
+    <ion-icon name="star" class="star"></ion-icon>
+    <ion-icon name="star" class="star"></ion-icon>
+    <ion-icon name="star" class="star"></ion-icon>
+    <ion-icon name="star" class="star"></ion-icon>
+    <ion-anchor [routerLink]="['/instantduo']" fragment="reviews-section" class="review-link">10 Reviews</ion-anchor>
+  </div>
+  <p class="review-text">
+    I love the glow these drops give me! Definitely a must-have in my beauty routine.
+  </p>
+</div>
+
+<!-- Review 5 -->
+<div class="review-item">
+  <p class="reviewer-name maven-pro-font">Max Smith</p>
+  <div class="rating-container">
+    <ion-icon name="star" class="star"></ion-icon>
+    <ion-icon name="star" class="star"></ion-icon>
+    <ion-icon name="star" class="star"></ion-icon>
+    <ion-icon name="star" class="star"></ion-icon>
+    <ion-icon name="star" class="star"></ion-icon>
+  </div>
+  <p class="review-text">
+    I love the glow these drops give me! Definitely a must-have in my beauty routine.
+  </p>
+</div>
+
+<!-- Review 6 -->
+<div class="review-item">
+  <p class="reviewer-name maven-pro-font">Jack Smith</p>
+  <div class="rating-container">
+    <ion-icon name="star" class="star"></ion-icon>
+    <ion-icon name="star" class="star"></ion-icon>
+    <ion-icon name="star" class="star"></ion-icon>
+    <ion-icon name="star" class="star"></ion-icon>
+    <ion-icon name="star" class="star"></ion-icon>
+  </div>
+  <p class="review-text">
+    I love the glow these drops give me! Definitely a must-have in my beauty routine.
+  </p>
+</div>
+
+<!-- Review 7 -->
+<div class="review-item">
+  <p class="reviewer-name maven-pro-font">Maya Smith</p>
+  <div class="rating-container">
+    <ion-icon name="star" class="star"></ion-icon>
+    <ion-icon name="star" class="star"></ion-icon>
+    <ion-icon name="star" class="star"></ion-icon>
+    <ion-icon name="star" class="star"></ion-icon>
+    <ion-icon name="star" class="star"></ion-icon>
+  </div>
+  <p class="review-text">
+    I love the glow these drops give me! Definitely a must-have in my beauty routine.
+  </p>
+</div>
+
+<!-- Review 8 -->
+<div class="review-item">
+  <p class="reviewer-name maven-pro-font">Matt Smith</p>
+  <div class="rating-container">
+    <ion-icon name="star" class="star"></ion-icon>
+    <ion-icon name="star" class="star"></ion-icon>
+    <ion-icon name="star" class="star"></ion-icon>
+    <ion-icon name="star" class="star"></ion-icon>
+    <ion-icon name="star" class="star"></ion-icon>
+  </div>
+  <p class="review-text">
+    I love the glow these drops give me! Definitely a must-have in my beauty routine.
+  </p>
+</div>
+
+<!-- Review 9 -->
+<div class="review-item">
+  <p class="reviewer-name maven-pro-font">Mariah Smith</p>
+  <div class="rating-container">
+    <ion-icon name="star" class="star"></ion-icon>
+    <ion-icon name="star" class="star"></ion-icon>
+    <ion-icon name="star" class="star"></ion-icon>
+    <ion-icon name="star" class="star"></ion-icon>
+    <ion-icon name="star" class="star"></ion-icon>
+  </div>
+  <p class="review-text">
+    I love the glow these drops give me! Definitely a must-have in my beauty routine.
+  </p>
+</div>
+
+
+<!-- Icons -->
+<div style="position: fixed; bottom: 0; left: 0; width: 100%; background-color: #fff; padding: 5px; display: flex; justify-content: space-around; border-top-left-radius: 30px; border-top-right-radius: 30px; border-top: 1px solid #ddd;">
+
+  <!-- Icon 1 - Home -->
+  <ion-button fill="clear" (click)="goToHomePage()">
+    <ion-label style="font-family: 'Maven Pro', sans-serif; font-weight: bold; font-size: 25px; color: dark;">T.</ion-label>
+  </ion-button>
+  
+   <!-- Icon 2 - Search -->
+   <ion-button fill="clear" (click)="goToSearchPage()">
+     <ion-icon name="search-outline" color="dark"></ion-icon>
+   </ion-button>
+  
+  
+  
+  <!-- Icon 4 - Favorites -->
+  <ion-button fill="clear" (click)="goToFavouritesPage()">
+   <ion-icon name="heart-outline" color="dark"></ion-icon>
+  </ion-button>
+  
+  
+   <!-- Icon 5 - Profile -->
+   <ion-button fill="clear" (click)="goToAccountPage()">
+     <ion-icon name="person-outline" color="dark"></ion-icon>
+   </ion-button>
+  
+  </div>
+  
+  </ion-content>
+

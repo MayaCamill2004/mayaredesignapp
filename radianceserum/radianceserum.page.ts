@@ -1,3 +1,8 @@
+
+
+
+
+
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { Router, NavigationExtras } from '@angular/router';
@@ -58,10 +63,9 @@ export class RadianceserumPage implements OnInit {
     const reviewsSectionElement = this.reviewsSection.nativeElement as HTMLElement;
     reviewsSectionElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
-  goToSecondHomePage(): void {
-    this.navCtrl.navigateBack('/secondhome');
+  goToHomePage() {
+    this.navCtrl.navigateForward('/home');
   }
-
   goToFavouritesPage(): void {
     this.navCtrl.navigateForward('/favourites');
   }

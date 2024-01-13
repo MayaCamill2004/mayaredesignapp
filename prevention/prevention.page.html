@@ -15,7 +15,7 @@
 </ion-toolbar>
 
 <ion-content class="ion-padding">
-  <!-- Product Grid -->
+
   <ion-grid>
     <ion-row *ngFor="let product of products; let i = index">
       <ion-col size="6" *ngIf="i % 1 === 0">
@@ -52,11 +52,11 @@
   </ion-grid>
   
 
-  <!-- Bottom Icons -->
+  <!--  Icons -->
   <div style="position: fixed; bottom: 0; left: 0; width: 100%; background-color: #fff; padding: 5px; display: flex; justify-content: space-around; border-top-left-radius: 30px; border-top-right-radius: 30px; border-top: 1px solid #ddd;">
 
     <!-- Home -->
-    <ion-button fill="clear" (click)="goToSecondPage()">
+    <ion-button fill="clear" (click)="goToHomePage()">
       <ion-label style="font-family: 'Maven Pro', sans-serif; font-weight: bold; font-size: 25px; color: dark;">T.</ion-label>
     </ion-button>
 
@@ -78,3 +78,4 @@
 
   </div>
 </ion-content>
+

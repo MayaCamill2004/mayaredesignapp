@@ -1,84 +1,86 @@
 
+
 .maven-pro-description {
+    font-family: 'Maven Pro', sans-serif;
+    font-size: 16px;
+    margin-top: 10px; 
+  }
+  
+  .maven-pro-title {
+    font-family: 'Maven Pro', sans-serif;
+    font-weight: bold;
+    font-size: 20px; 
+    margin-top: 10px; 
+  }
+  
+  .maven-pro-price {
+    font-family: 'Maven Pro', sans-serif;
+    font-size: 18px; 
+    margin-top: 10px; 
+  }
+  
+  
+  .rating-container {
+    display: flex;
+    align-items: center;
+    margin-top: 10px; 
+  }
+  
+  .star {
+    color: rgb(0, 0, 0); 
+    font-size: 20px;
+  }
+  
+  .review-text {
+    margin-left: 5px; 
+  }
+  
+  
+  .add-to-bag-button {
+    margin-top: 15px; 
+  }
+  
+  
+  .roboto-mono-font {
+  font-family: 'Roboto Mono', monospace;
+  }
+  
+  .maven-pro-review-title {
   font-family: 'Maven Pro', sans-serif;
-  font-size: 16px;
-  margin-top: 10px; 
-}
-
-.maven-pro-title {
+  font-size: 1.5em;
+  margin-top: 20px;
+  }
+  
+  
+  .reviews-section {
+  margin-top: 10px;
+  }
+  
+  .review-item {
+  margin-bottom: 20px;
+  }
+  
+  
+  .reviewer-name {
   font-family: 'Maven Pro', sans-serif;
+  font-size: 1.2em;
   font-weight: bold;
-  font-size: 20px; 
-  margin-top: 10px; 
-}
-
-.maven-pro-price {
-  font-family: 'Maven Pro', sans-serif;
-  font-size: 18px; 
-  margin-top: 10px; 
-}
-
-
-.rating-container {
-  display: flex;
-  align-items: center;
-  margin-top: 10px; 
-}
-
-.star {
-  color: rgb(0, 0, 0); 
-  font-size: 20px;
-}
-
-.review-text {
+  margin-bottom: 5px;
+  }
+  
+  .review-text {
+  font-size: 1em;
+  color: #555;
+  }
+  
+  html {
+  scroll-behavior: smooth;
+  }
+  
+  .review-link {
+  text-decoration: underline;
+  cursor: pointer;
+  color: rgb(10, 10, 11);
   margin-left: 5px; 
-}
-
-
-.add-to-bag-button {
-  margin-top: 15px; 
-}
-
-
-.roboto-mono-font {
-font-family: 'Roboto Mono', monospace;
-}
-
-.maven-pro-review-title {
-font-family: 'Maven Pro', sans-serif;
-font-size: 1.5em;
-margin-top: 20px;
-}
-
-
-.reviews-section {
-margin-top: 10px;
-}
-
-.review-item {
-margin-bottom: 20px;
-}
-
-
-.reviewer-name {
-font-family: 'Maven Pro', sans-serif;
-font-size: 1.2em;
-font-weight: bold;
-margin-bottom: 5px;
-}
-
-.review-text {
-font-size: 1em;
-color: #555;
-}
-
-html {
-scroll-behavior: smooth;
-}
-
-.review-link {
-text-decoration: underline;
-cursor: pointer;
-color: rgb(10, 10, 11);
-margin-left: 5px; 
-}
+  }
+  

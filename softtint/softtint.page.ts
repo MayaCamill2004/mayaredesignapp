@@ -1,13 +1,13 @@
+
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { Router, NavigationExtras } from '@angular/router';
 
-// Define the Product type
 interface Product {
   id: number;
   name: string;
   price: number;
-  // Add other properties as needed
+
 }
 
 @Component({
@@ -28,15 +28,15 @@ export class SofttintPage implements OnInit {
   }
 
   addToBag(): void {
-    // Assuming you have a Product object defined somewhere
+    
     const item: Product = {
       id: 1,
-      name: 'Soft Tint', // Example name
-      price: 20.99, // Example price
-      // Add other properties as needed
+      name: 'Soft Tint', 
+      price: 20.99, 
+      
     };
 
-    // Use Angular Router Navigation Extras to pass data to the cart page
+   
     const navigationExtras: NavigationExtras = {
       state: {
         product: item
@@ -46,13 +46,13 @@ export class SofttintPage implements OnInit {
     this.router.navigate(['/cart'], navigationExtras);
   }
 
-  // Function to scroll to reviews section
+  
   scrollToReviews() {
     const reviewsSectionElement = this.reviewsSection.nativeElement as HTMLElement;
     reviewsSectionElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
-  goToSecondHomePage(): void {
-    this.navCtrl.navigateBack('/secondhome');
+  goToHomePage() {
+    this.navCtrl.navigateForward('/home');
   }
 
   goToFavouritesPage(): void {

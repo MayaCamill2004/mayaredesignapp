@@ -1,3 +1,6 @@
+
+
+
 import { Component } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { Router } from '@angular/router';
@@ -8,16 +11,15 @@ import { Router } from '@angular/router';
   styleUrls: ['search.page.scss'],
 })
 export class SearchPage {
-  allowedSearchTerms: string[] = ['face care', 'body care', 'hair care', 'skin ageing'];
+  allowedSearchTerms: string[] = ['facecare', 'bodycare', 'faceserum','bodyscrub','shampoos','showers','skinageing','tintedcare', 'skinageing'];
   searchTerm: string = '';
   searchResults: any[] = [];
 
   constructor(private navCtrl: NavController, private router: Router) {}
 
-  goToSecondPage() {
-    this.navigateTo('/secondhome');
+  goToHomePage() {
+    this.navCtrl.navigateForward('/home');
   }
-
   goToFavouritesPage() {
     this.navigateTo('/favourites');
   }
@@ -37,10 +39,11 @@ export class SearchPage {
     const cleanedSearchTerm = this.searchTerm.toLowerCase().trim();
 
     if (cleanedSearchTerm && this.allowedSearchTerms.includes(cleanedSearchTerm)) {
-      // Navigate to the specific page based on the search term
+      
       this.router.navigate([`/${cleanedSearchTerm.replace(' ', '-').toLowerCase()}`]);
     } else {
       console.log('Invalid search term');
     }
   }
 }
+
