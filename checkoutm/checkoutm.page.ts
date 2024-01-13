@@ -1,7 +1,6 @@
-
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-
+import { CartService } from '../cart.service'; 
 @Component({
   selector: 'app-checkoutm',
   templateUrl: 'checkoutm.page.html',
@@ -11,23 +10,32 @@ export class CheckoutmPage {
   cartItems: any[] = [];
   promoCode: string = '';
   selectedDeliveryAddress: string = '';
-  selectedDeliveryOption: string = '';
+  selectedDeliveryOption: string = 'standard';
   selectedPaymentType: string = '';
-  subTotal: number = 20; 
+  subTotal: number = 0; 
   deliveryCost: number = 7; 
+  totalToPay: number = 0;
   deliveryOptions = [
     { label: 'Standard Delivery (€7)', value: 'standard' },
-    { label: 'Next Day Delivery (€20)', value: 'nextDay' },
   ];
 
-  constructor(private route: ActivatedRoute, private router: Router) {}
+  constructor(
+    private cartService: CartService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {}
+
 
   ionViewWillEnter() {
-    this.route.queryParams.subscribe(params => {
-      this.cartItems = JSON.parse(params['cartItems'] || '[]');
-      this.calculateSubTotal(); 
-    });
+    this.cartItems = this.cartService.getCart();
+    this.selectedDeliveryAddress = this.cartService.getAddress();
+    this.selectedPaymentType = this.cartService.getPaymentDetails();
+    this.calculateSubTotal();
+    this.calculateTotalToPay();
   }
+  
+  
+
 
   confirmOrder() {
     if (this.validatePromoCode()) {
@@ -39,35 +47,36 @@ export class CheckoutmPage {
   changePaymentType() {
     this.router.navigate(['/paymentmethod']);
   }
-
-  changeDeliveryOption(option: any) {
-    this.selectedDeliveryOption = option.value;
-    if (option.value === 'standard') {
-      this.deliveryCost = 7;
-    } else if (option.value === 'nextDay') {
-      this.deliveryCost = 20;
-    }
-    this.calculateSubTotal(); 
+  changeDeliveryAddress() {
+    this.router.navigate(['/address']);
   }
+  
 
   private validatePromoCode(): boolean {
     return this.promoCode.trim().toUpperCase() === '1200M';
   }
 
-  calculateSubTotal(): number {
-    const productSubTotal = this.cartItems.reduce((total, item) => total + item.price, 0);
-    this.subTotal = productSubTotal + this.deliveryCost;
-    return this.subTotal;
+  calculateTotalToPay(): void {
+    this.totalToPay = this.subTotal + this.deliveryCost;
   }
-
-  changeDeliveryAddress() {
-    this.router.navigate(['/add-address']);
+  changeDeliveryOption() {
+    this.deliveryCost = this.selectedDeliveryOption === 'standard' ? 7 : 20;
+    this.calculateTotalToPay();
   }
+  
   confirmorder() {
     this.router.navigate(['/confirmorder']);
   }
+  calculateSubTotal(): number {
+    this.subTotal = this.cartItems.reduce((total, item) => {
+      return total + (item.price * item.quantity);
+    }, 0);
+    return this.subTotal;
+  }
 
+  
 
   
 
 }
+

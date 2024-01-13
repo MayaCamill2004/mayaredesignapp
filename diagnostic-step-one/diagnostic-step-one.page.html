@@ -1,0 +1,12 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>diagnosticStepOne</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-radio-group [(ngModel)]="selectedAnswer">
+  </ion-radio-group>
+
+  <ion-button (click)="saveAndNext(selectedAnswer)">Next</ion-button>
+</ion-content>

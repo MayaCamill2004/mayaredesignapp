@@ -1,30 +1,21 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
-import { SlickCarouselModule } from 'ngx-slick-carousel';
-import { CartService } from './cart.service';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { FavoriteService } from './favorite.service';
 import { FormsModule } from '@angular/forms'; 
-import { PaymentmethodPage } from './paymentmethod/paymentmethod.page'; 
+import { CartService } from './cart.service';
+import { FavoriteService } from './favorite.service';
+import { OrderService } from './order.service';
+
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [
-    BrowserModule,
-    IonicModule.forRoot(),
-    AppRoutingModule,
-    SlickCarouselModule,
-    FormsModule, 
-  ],
-  providers: [
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    CartService,
-    FavoriteService,
-  ],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  
 })
+ 
 export class AppModule {}

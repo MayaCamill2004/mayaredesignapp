@@ -2,19 +2,18 @@ import { Component } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { Router } from '@angular/router';
 
-
-
-
 @Component({
   selector: 'app-account',
   templateUrl: './account.page.html',
   styleUrls: ['./account.page.scss'],
 })
 export class AccountPage {
-  selectedImage: any;
-  userName: string = "Maya Camilleri";
+  userImage: string | null = null;
+  userName: string = 'Maya Camilleri'; 
 
-  constructor(private router: Router, private navCtrl: NavController) {}
+  constructor(private router: Router, private navCtrl: NavController) {
+
+  }
 
   goToPaymentMethodPage(): void {
     this.router.navigate(['/paymentmethod']);
@@ -24,15 +23,15 @@ export class AccountPage {
     this.router.navigate(['/address']);
   }  
   
-  goToMyOrders() {
-    this.router.navigate(['/myorders']);
+  goToOrdersPage() {
+    this.router.navigate(['/orders']);
   }
 
   goToCartPage() {
     this.navigateTo('/cart');
   }
-  goToSecondPage() {
-    this.navigateTo('/secondhome');
+  goToHomePage() {
+    this.navigateTo('/home');
   }
 
   goToFavouritesPage() {
@@ -50,7 +49,6 @@ export class AccountPage {
     this.navigateTo('/search');
   }
 
-
   goToAccountPage() {
     this.navigateTo('/account'); 
   }
@@ -65,22 +63,16 @@ export class AccountPage {
       if (file) {
         const reader = new FileReader();
         reader.onload = (e) => {
-          this.selectedImage = e.target?.result;
+          this.userImage = e.target?.result as string; 
         };
         reader.readAsDataURL(file);
       }
     }
   }
 
-  // signOut method
+
   signOut(): void {
-    console.log('Signing out...');
+    // Navigate to the login 
+    this.navCtrl.navigateRoot(['/login']);
   }
 }
-
-
-
-
-
- 
-

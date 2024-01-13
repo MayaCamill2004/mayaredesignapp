@@ -1,3 +1,4 @@
+
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -11,6 +12,6 @@ export class ConfirmorderPage {
   constructor(private router: Router) {}
 
   continueShopping() {
-    this.router.navigate(['secondhome']);
+    this.router.navigate(['home']);
   }
 }

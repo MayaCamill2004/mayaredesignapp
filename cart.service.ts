@@ -5,11 +5,19 @@ import { Injectable } from '@angular/core';
 })
 export class CartService {
   private selectedProduct: any;
-  cart: any[] = []; 
+  private cart: any[] = [];
+  private deliveryAddress: string = '';
+  private paymentDetails: string;
+  
+
+  constructor() {
+  this.paymentDetails = ''; 
+}
 
   addToCart(product: any): void {
     this.cart.push(product);
   }
+
 
   getCart(): any[] {
     return this.cart;
@@ -29,4 +37,21 @@ export class CartService {
   getSelectedProduct(): any {
     return this.selectedProduct;
   }
+
+  setAddress(address: string): void {
+    this.deliveryAddress = address;
+  }
+
+  getAddress(): string {
+    return this.deliveryAddress;
+  }
+  getPaymentDetails(): string {
+    return this.paymentDetails;
+  }
+
+  setPaymentDetails(details: string): void {
+    this.paymentDetails = details;
+  }
+  
+ 
 }

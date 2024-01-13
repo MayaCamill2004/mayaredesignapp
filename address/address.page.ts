@@ -1,11 +1,15 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';  
+import { CartService } from '../cart.service';
+
 @Component({
   selector: 'app-address',
   templateUrl: 'address.page.html',
   styleUrls: ['address.page.scss'],
 })
 export class AddressPage {
+  fullAddress: string = ''; 
+
 
   firstName: string = '';
   lastName: string = '';
@@ -213,16 +217,26 @@ export class AddressPage {
     { label: 'Zambia', value: 'ZM' },
     { label: 'Zimbabwe', value: 'ZW' },
   ];
-  constructor(private router: Router) {}
-
+  constructor(
+    private router: Router,
+    private cartService: CartService 
+  ) {
+  }
   confirmAddress(): void {
-    if (this.isFormValid()) {
-      this.selectedDeliveryAddress = this.getAddressString();
-      console.log('Selected Delivery Address:', this.selectedDeliveryAddress);
-  
-      this.router.navigate(['/checkoutm']);
-      console.log('Navigating to Checkoutm page...');
-    }
+
+    this.fullAddress = [
+      this.firstName,
+      this.lastName,
+      this.mobile,
+      this.selectedCountry,
+      this.address,
+      this.townCity,
+      this.postcode,
+    ].join(', '); 
+    this.cartService.setAddress(this.fullAddress);
+
+    // Navigate back to the checkout 
+    this.router.navigate(['/checkoutm']);
   }
 
   isFormValid(): boolean {
@@ -241,4 +255,32 @@ export class AddressPage {
   getAddressString(): string {
     return `${this.address}, ${this.townCity}, ${this.postcode}, ${this.selectedCountry}`;
   }
-}
+  saveDefaultAddress(): void {
+    const addressDetails = {
+      firstName: this.firstName,
+      lastName: this.lastName,
+      mobile: this.mobile,
+      selectedCountry: this.selectedCountry,
+      address: this.address,
+      townCity: this.townCity,
+      postcode: this.postcode
+    };
+    localStorage.setItem('defaultAddress', JSON.stringify(addressDetails));
+  }
+  loadDefaultAddress(): void {
+    const defaultAddressString = localStorage.getItem('defaultAddress');
+    if (defaultAddressString) {
+      const defaultAddress = JSON.parse(defaultAddressString);
+      if (defaultAddress) {
+        this.firstName = defaultAddress.firstName || '';
+        this.lastName = defaultAddress.lastName || '';
+        this.mobile = defaultAddress.mobile || '';
+        this.selectedCountry = defaultAddress.selectedCountry || '';
+        this.address = defaultAddress.address || '';
+        this.townCity = defaultAddress.townCity || '';
+        this.postcode = defaultAddress.postcode || '';
+      }
+    }
+  }
+  
+}  

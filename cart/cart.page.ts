@@ -1,8 +1,9 @@
-
 import { Component } from '@angular/core';
-import { CartService } from '../cart.service'; 
 import { NavController } from '@ionic/angular';
 import { Router } from '@angular/router';
+import { CartService } from '../cart.service';
+
+
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.page.html',
@@ -17,8 +18,11 @@ export class CartPage {
   ngOnInit() {
     this.selectedProduct = this.cartService.getSelectedProduct();
     this.loadCartItems();
+    
   }
-  
+  private loadCartItems() {
+    this.cartItems = this.cartService.getCart().map(item => ({ ...item, quantity: 1 }));
+  }
 
   applePay() {
     this.router.navigate(['/applepay']);
@@ -38,12 +42,9 @@ export class CartPage {
     this.cartService.removeFromCart(item);
   }
 
-  private loadCartItems() {
-    this.cartItems = this.cartService.getCart().map(item => ({ ...item, quantity: 1 }));
-  }
 
   checkout() {
-    this.router.navigate(['/checkoutm'], { queryParams: { cartItems: JSON.stringify(this.cartItems) } });
+    this.router.navigate(['/checkoutm'], { state: { cartItems: this.cartService.getCart() } });
   }
+  
 }
-
