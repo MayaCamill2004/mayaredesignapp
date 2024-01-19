@@ -2,7 +2,7 @@
 Progress
 Typology Skincare Redesign
 
-This project is a redesigned mobile application for Typology Skincare, aimed at providing users with a seamless and intuitive skin care shopping experience. This app allows users to browse, add to favourites and purchase skincare products. 
+This project is a redesigned mobile application for Typology Skincare, aimed at providing users with a seamless and intuitive skin care shopping experience. This app allows users to browse, add to favourites and purchase skincare products. The application is only availible on mobile phones. It's not availible for ipads and web.
 
 Description
 
