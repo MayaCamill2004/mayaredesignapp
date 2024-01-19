@@ -48,10 +48,13 @@
     </ion-item-sliding>
   </ion-list>
 
-  <!-- Empty cart message -->
-  <ng-template #emptyCart>
+  
+<ng-template #emptyCart>
+  <div class="empty-cart-message">
     <p>Your cart is empty.</p>
-  </ng-template>
+  </div>
+</ng-template>
+
 
   <!-- Checkout button-->
   <ion-row *ngIf="cartItems.length > 0" style="margin-top: 20px; justify-content: space-around;">

@@ -18,9 +18,9 @@
 <ion-content>
   <div style="text-align: center; padding: 16px;">
     <ion-avatar style="margin: auto;">
-      <!-- Use the userImage property, and provide alt text for accessibility -->
+     
       <img *ngIf="userImage" [src]="userImage" alt="User Profile Image" />
-      <!-- Show the default icon when there is no user image -->
+      
       <ion-icon *ngIf="!userImage" name="person-circle" style="font-size: 5em;"></ion-icon>
     </ion-avatar>
     <h2>{{ userName }}</h2>
