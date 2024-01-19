@@ -1,13 +1,15 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CartService } from '../cart.service'; 
+import { AlertController } from '@ionic/angular';
+
 @Component({
   selector: 'app-checkoutm',
   templateUrl: 'checkoutm.page.html',
   styleUrls: ['checkoutm.page.scss'],
 })
 export class CheckoutmPage {
-  cartItems: any[] = [];
+  cartItems: any[] = []; 
   promoCode: string = '';
   selectedDeliveryAddress: string = '';
   selectedDeliveryOption: string = 'standard';
@@ -17,12 +19,14 @@ export class CheckoutmPage {
   totalToPay: number = 0;
   deliveryOptions = [
     { label: 'Standard Delivery (€7)', value: 'standard' },
+    
   ];
 
   constructor(
     private cartService: CartService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private alertController: AlertController,
   ) {}
 
 
@@ -33,17 +37,25 @@ export class CheckoutmPage {
     this.calculateSubTotal();
     this.calculateTotalToPay();
   }
+  async presentAlert() {
+    const alert = await this.alertController.create({
+      header: 'Invalid Promo Code',
+      message: 'The promo code you entered is not valid. Please try again.',
+      buttons: ['OK']
+    });
   
-  
-
+    await alert.present();
+  }
 
   confirmOrder() {
-    if (this.validatePromoCode()) {
+    if (!this.promoCode || this.validatePromoCode()) {
       this.router.navigate(['/confirmorder']);
     } else {
-      console.log('Invalid promo code. Please enter a valid code.');
+      // If an incorrect promo code is entered, show an alert to the user
+      this.presentAlert();
     }
   }
+
   changePaymentType() {
     this.router.navigate(['/paymentmethod']);
   }
@@ -53,9 +65,9 @@ export class CheckoutmPage {
   
 
   private validatePromoCode(): boolean {
+    // Check if the promo code matches '1200M'
     return this.promoCode.trim().toUpperCase() === '1200M';
   }
-
   calculateTotalToPay(): void {
     this.totalToPay = this.subTotal + this.deliveryCost;
   }
