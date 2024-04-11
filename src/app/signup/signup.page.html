@@ -1,0 +1,39 @@
+<ion-header translucent>
+  <ion-toolbar>
+    <ion-title>Typology.</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen>
+  <form #signupForm="ngForm" (ngSubmit)="onSignup(signupForm)">
+    <div class="signup-header">
+      <h1>Sign Up</h1>
+    </div>
+    
+    <ion-list>
+      <ion-item>
+        <ion-label position="floating">First Name</ion-label>
+        <ion-input type="text" [(ngModel)]="newUser.firstName" name="firstName" required #firstName="ngModel"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Last Name</ion-label>
+        <ion-input type="text" [(ngModel)]="newUser.lastName" name="lastName" required #lastName="ngModel"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Email</ion-label>
+        <ion-input type="email" [(ngModel)]="newUser.email" name="email" required email #signupEmail="ngModel"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Password</ion-label>
+        <ion-input type="password" [(ngModel)]="newUser.password" name="password" required #signupPassword="ngModel"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Confirm Password</ion-label>
+        <ion-input type="password" [(ngModel)]="newUser.confirmPassword" name="confirmPassword" required #confirmPassword="ngModel"></ion-input>
+      </ion-item>
+    </ion-list>
+
+    <ion-button type="submit" expand="full" shape="round" [disabled]="signupForm.invalid">Sign Up</ion-button>
+    <p class="login-text">Already have an account? <a href="/login">Login</a></p>
+  </form>
+</ion-content>

@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+      <ion-back-button defaultHref="/cart"></ion-back-button>
+    </ion-buttons>
+    <ion-title>PAYMENT-METHOD</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">PAYMENT-METHOD</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-list>
+    <ion-item>
+      <ion-label position="floating">Card Title</ion-label>
+      <ion-input [(ngModel)]="cardTitle" name="cardTitle" type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Card Number</ion-label>
+      <ion-input [(ngModel)]="cardNumber" name="cardNumber" type="text"></ion-input>
+    </ion-item>
+
+ 
+    <ion-item>
+      <ion-label position="floating">Expiry Date</ion-label>
+      <ion-input [(ngModel)]="expiryMonth" name="expiryMonth" type="text" placeholder="MM"></ion-input>
+      <ion-input [(ngModel)]="expiryYear" name="expiryYear" type="text" placeholder="YY"></ion-input>
+    </ion-item>
+
+
+    <ion-item>
+      <ion-label position="floating">Name on the Card</ion-label>
+      <ion-input [(ngModel)]="cardHolderName" name="cardHolderName" type="text"></ion-input>
+    </ion-item>
+
+
+    <ion-item>
+      <ion-label position="floating">CVV</ion-label>
+      <ion-input [(ngModel)]="cvv" name="cvv" type="text"></ion-input>
+    </ion-item>
+  </ion-list>
+
+  <ion-button expand="full" color="primary" (click)="useCard()">Use this card</ion-button>
+</ion-content>
+
+

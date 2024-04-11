@@ -1,0 +1,41 @@
+<ion-header translucent>
+  <ion-toolbar>
+    <ion-title>Typology.</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen>
+  <form #loginForm="ngForm" (ngSubmit)="onLogin(loginForm)">
+
+    <div class="login-header">
+      <h1>Login</h1>
+    </div>
+    <ion-list>
+      <ion-item>
+        <ion-label position="floating">Email</ion-label>
+        <ion-input type="email" [(ngModel)]="user.email" name="email" required email #email="ngModel"></ion-input>
+      </ion-item>
+      <div *ngIf="email.invalid && email.touched" class="error-message">
+        Please enter a valid email.
+      </div>
+      <ion-item>
+        <ion-label position="floating">Password</ion-label>
+        <ion-input type="password" [(ngModel)]="user.password" name="password" required #password="ngModel"></ion-input>
+      </ion-item>
+      <div *ngIf="password.invalid && password.touched" class="error-message">
+        Password is required.
+      </div>
+    </ion-list>
+
+  <!-- 
+<div class="social-icons">
+  <ion-icon name="logo-facebook"></ion-icon>
+  <ion-icon name="logo-instagram"></ion-icon>
+</div> 
+-->
+
+
+    <ion-button type="submit" expand="full" shape="round" [disabled]="loginForm.invalid">Login</ion-button>
+    <p class="signup-text">Don't have an account? <a href="/signup">Sign up</a></p>
+  </form>
+</ion-content>
