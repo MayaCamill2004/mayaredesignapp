@@ -10,7 +10,7 @@ describe('ApplepayPage', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));
-
+s
   it('should create', () => {
     expect(component).toBeTruthy();
   });

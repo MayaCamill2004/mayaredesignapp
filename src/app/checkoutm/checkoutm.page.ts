@@ -34,6 +34,8 @@ export class CheckoutmPage {
     this.calculateSubTotal();
     this.calculateTotalToPay();
   }
+
+  //error when promo is invalid
   async presentAlert() {
     const alert = await this.alertController.create({
       header: 'Invalid Promo Code',

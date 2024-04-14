@@ -9,9 +9,10 @@
 </ion-header>
 
 
+ <!-- infomration about user  -->
 <ion-content class="ion-padding">
   <form #addressForm="ngForm" (ngSubmit)="confirmAddress()">
-    <!-- Contact Details -->
+   
     <ion-item>
       <ion-label position="floating">First Name</ion-label>
       <ion-input [(ngModel)]="firstName" name="firstName" type="text" required></ion-input>

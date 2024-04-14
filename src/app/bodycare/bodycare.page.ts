@@ -17,6 +17,8 @@ interface Product {
   templateUrl: './bodycare.page.html',
   styleUrls: ['./bodycare.page.scss'],
 })
+
+//images,description and prices all in the body care page 
 export class BodycarePage implements OnInit {
   products: Product[] = [
 
@@ -41,7 +43,7 @@ export class BodycarePage implements OnInit {
     ) {}
   
   
-  
+  //navigate to the product detail page the user interacts with
     ngOnInit() {}
     navigateToProductDetail(product: any) {
       this.router.navigateByUrl(`/product-detail/${product.title.toLowerCase().split(' ').join('-')}`, {

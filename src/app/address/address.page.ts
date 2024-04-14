@@ -255,6 +255,7 @@ export class AddressPage {
   getAddressString(): string {
     return `${this.address}, ${this.townCity}, ${this.postcode}, ${this.selectedCountry}`;
   }
+  
   saveDefaultAddress(): void {
     const addressDetails = {
       firstName: this.firstName,

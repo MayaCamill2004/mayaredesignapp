@@ -1,20 +1,21 @@
 import { Injectable } from '@angular/core';
-import { Order } from './order.interface'; 
+import { Order } from './order.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class OrderService {
-  private orders: Order[] = [];
+  recentOrder: Order | null = null;
 
   constructor() { }
 
-  placeOrder(order: Order) {
-    this.orders.push(order);
-    
+  // Method to add a new order
+  addOrder(order: Order) {
+    this.recentOrder = order;
   }
 
-  getRecentOrder(): Order | undefined {
-    return this.orders.length > 0 ? this.orders[this.orders.length - 1] : undefined;
+  // Method to get the recent order
+  getRecentOrder(): Order | null {
+    return this.recentOrder;
   }
 }

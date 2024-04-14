@@ -1,3 +1,4 @@
+
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CartService } from '../cart.service'; 
@@ -10,7 +11,8 @@ import { AlertController } from '@ionic/angular';
 })
 export class ApplepayPage{
 
-   cartItems: any[] = []; 
+
+  cartItems: any[] = []; 
   promoCode: string = '';
   selectedDeliveryAddress: string = '';
   selectedDeliveryOption: string = 'standard';
@@ -18,6 +20,7 @@ export class ApplepayPage{
   subTotal: number = 0; 
   deliveryCost: number = 7; 
   totalToPay: number = 0;
+  ;
 
   constructor(
     private cartService: CartService,
@@ -25,7 +28,6 @@ export class ApplepayPage{
     private router: Router,
     private alertController: AlertController,
   ) {}
-
 
 
   ionViewWillEnter() {
@@ -60,7 +62,6 @@ export class ApplepayPage{
   changeDeliveryAddress() {
     this.router.navigate(['/address']);
   }
-  
 
   private validatePromoCode(): boolean {
     // Check if the promo code matches '1200M'
@@ -69,18 +70,16 @@ export class ApplepayPage{
   calculateTotalToPay(): void {
     this.totalToPay = this.subTotal + this.deliveryCost;
   }
-  changeDeliveryOption() {
-    this.deliveryCost = this.selectedDeliveryOption === 'standard' ? 7 : 20;
-    this.calculateTotalToPay();
-  }
-  
+ 
   confirmorder() {
     this.router.navigate(['/confirmorder']);
   }
+
+  //subtotal
   calculateSubTotal(): number {
     this.subTotal = this.cartItems.reduce((total, item) => {
       return total + (item.price * item.quantity);
-    }, 50);
+    }, 0);
     return this.subTotal;
   }
 

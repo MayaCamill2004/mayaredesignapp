@@ -23,4 +23,15 @@ export class LoginPage {
       console.log('Form is invalid');
     }
   }
+
+  //Api using spotify app created details
+  loginWithSpotify() {
+    const clientId = 'c0fa398ec1dd4976822464b88deef3e8';
+    const redirectUri = encodeURIComponent('http://localhost:8100/home');
+    const scope = 'user-read-private user-read-email'; // Adjust the scope based on your requirements
+
+    const spotifyAuthUrl = `https://accounts.spotify.com/authorize?response_type=token&client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scope}`;
+
+    window.location.href = spotifyAuthUrl;
+  }
 }

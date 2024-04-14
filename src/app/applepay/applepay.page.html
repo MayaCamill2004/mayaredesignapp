@@ -1,4 +1,5 @@
-<ion-header [translucent]="true">
+
+<ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
@@ -41,32 +42,40 @@
     <ion-button (click)="changeDeliveryAddress()">Change</ion-button>
   </ion-item>
   
+
+  <!-- Delivery Options -->
+  <ion-item>
+  <ion-label class="delivery-options">Delivery Options</ion-label>
+
+  </ion-item>
   
 
-  
- 
-  <!-- Sub-Total -->
-  <ion-item>
-    <ion-label>Sub-Total</ion-label>
-    <ion-text>{{ subTotal | currency:'EUR':'symbol-narrow' }}</ion-text>
-  </ion-item>
 
-  <!-- Delivery -->
-  <ion-item>
-    <ion-label>Delivery</ion-label>
-    <ion-text>{{ deliveryCost | currency:'EUR':'symbol-narrow' }}</ion-text>
-  </ion-item>
 
-  <!-- Total to Pay -->
-  <ion-item>
-    <ion-label>Total to Pay</ion-label>
-    <ion-text>{{ totalToPay | currency:'EUR':'symbol-narrow' }}</ion-text>
-  </ion-item>
+ <!-- Sub-Total -->
+ <ion-item>
+  <ion-label>Sub-Total</ion-label>
+  <ion-text>{{ subTotal | currency:'EUR':'symbol-narrow' }}</ion-text>
+</ion-item>
 
-  <!-- Confirm Order Button -->
-  <ion-button expand="full" color="primary" (click)="confirmOrder()">Confirm Order</ion-button>
+<!-- Delivery -->
+<ion-item>
+  <ion-label>Delivery</ion-label>
+  <ion-text>{{ deliveryCost | currency:'EUR':'symbol-narrow' }}</ion-text>
+</ion-item>
 
-  <ng-template #emptyCart>
-    <p>Your cart is empty.</p>
-  </ng-template>
+<!-- Total to Pay -->
+<ion-item>
+  <ion-label>Total to Pay</ion-label>
+  <ion-text>{{ totalToPay | currency:'EUR':'symbol-narrow' }}</ion-text>
+</ion-item>
+
+<!-- Confirm Order Button -->
+<ion-button expand="full" color="primary" (click)="confirmOrder()">Confirm Order</ion-button>
+
+<ng-template #emptyCart>
+  <p>Your cart is empty.</p>
+</ng-template>
 </ion-content>
+
+

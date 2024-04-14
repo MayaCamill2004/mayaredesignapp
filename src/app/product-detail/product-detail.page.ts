@@ -31,10 +31,9 @@ export class ProductDetailPage implements OnInit {
   }
 
   addToBag(product: any) {
-
-    this.router.navigate(['/applepay'], { state: { product: product } });
-    this.cartService.addToCart(product);
-  }
+    this.router.navigate(['/cart'], { state: { product: product } });
+    this.cartService.addToCart(product); 
+}
  
   goToCartPage() {
     this.router.navigate(['/cart']); 

@@ -100,6 +100,11 @@ const routes: Routes = [
     path: 'byconcern',
     loadChildren: () => import('./byconcern/byconcern.module').then( m => m.ByconcernPageModule)
   },
+  {
+    path: 'exploreroutines',
+    loadChildren: () => import('./exploreroutines/exploreroutines.module').then( m => m.ExploreroutinesPageModule)
+  },
+ 
  
 
 ];

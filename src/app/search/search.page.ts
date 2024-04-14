@@ -32,6 +32,10 @@ export class SearchPage {
     this.navigateTo('/newin');
   }
 
+  navigateToexploreroutines() {
+    this.navigateTo('/exploreroutines');
+  }
+
   private navigateTo(page: string) {
     this.navCtrl.navigateForward(page);
   }
