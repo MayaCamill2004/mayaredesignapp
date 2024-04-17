@@ -104,6 +104,10 @@ const routes: Routes = [
     path: 'exploreroutines',
     loadChildren: () => import('./exploreroutines/exploreroutines.module').then( m => m.ExploreroutinesPageModule)
   },
+  {
+    path: 'reviews',
+    loadChildren: () => import('./reviews/reviews.module').then( m => m.ReviewsPageModule)
+  },
  
  
 

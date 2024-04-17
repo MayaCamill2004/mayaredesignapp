@@ -72,7 +72,7 @@ export class CheckoutmPage {
   }
  
   confirmorder() {
-    this.router.navigate(['/confirmorder']);
+    this.router.navigate(['/reviews']);
   }
   calculateSubTotal(): number {
     this.subTotal = this.cartItems.reduce((total, item) => {
