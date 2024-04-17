@@ -12,7 +12,8 @@ interface NavigationState {
   styleUrls: ['./product-detail.page.scss'],
 })
 export class ProductDetailPage implements OnInit {
-  product: any; 
+  product: any;
+  showDescription: boolean = false; // Added property for description visibility
 
   constructor(
     private route: ActivatedRoute,
@@ -33,14 +34,16 @@ export class ProductDetailPage implements OnInit {
   addToBag(product: any) {
     this.router.navigate(['/cart'], { state: { product: product } });
     this.cartService.addToCart(product); 
-}
+  }
  
   goToCartPage() {
     this.router.navigate(['/cart']); 
   }
+  
   goToHomePage() {
     this.router.navigate(['/home']);
   }
+  
   goToFavouritesPage(): void {
     this.router.navigate(['/favourites']);
   }
@@ -53,6 +56,14 @@ export class ProductDetailPage implements OnInit {
     this.router.navigate(['/search']);
   }
 
+  goToReviewsPage(): void{
+    this.router.navigate(['/viewreviews']);
+  }
+
+ 
+  toggleDescription() {
+    this.showDescription = !this.showDescription;
+  }
 
 
 }
