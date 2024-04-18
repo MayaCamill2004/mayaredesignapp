@@ -13,11 +13,14 @@ export class CartService {
   constructor() {
   this.paymentDetails = ''; 
 }
-
-  addToCart(product: any): void {
+addToCart(product: any): void {
+  const existingProduct = this.cart.find((item) => item.title === product.title);
+  if (existingProduct) {
+    existingProduct.quantity = parseInt(existingProduct.quantity) + parseInt(product.quantity);
+  } else {
     this.cart.push(product);
   }
-
+}
 
   getCart(): any[] {
     return this.cart;
@@ -52,6 +55,16 @@ export class CartService {
   setPaymentDetails(details: string): void {
     this.paymentDetails = details;
   }
-  
- 
+  updateQuantity(product: any, newQuantity: string): void {
+    const cartProduct = this.cart.find((item) => item.title === product.title);
+    if (cartProduct) {
+      cartProduct.quantity = newQuantity;
+    }
+  }
+
+  getQuantity(product: any): string {
+    const cartProduct = this.cart.find((item) => item.title === product.title);
+    return cartProduct ? cartProduct.quantity : '0';
+  }
 }
+ 

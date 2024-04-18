@@ -68,10 +68,7 @@ const routes: Routes = [
     path: 'newin',
     loadChildren: () => import('./newin/newin.module').then( m => m.NewinPageModule)
   },
-  {
-    path: 'firstsignsofageing',
-    loadChildren: () => import('./firstsignsofageing/firstsignsofageing.module').then( m => m.FirstsignsofageingPageModule)
-  },
+  
   {
     path: 'trending',
     loadChildren: () => import('./trending/trending.module').then( m => m.TrendingPageModule)

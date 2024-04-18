@@ -29,6 +29,7 @@ export class CheckoutmPage {
 
   ionViewWillEnter() {
     this.cartItems = this.cartService.getCart();
+    console.log();
     this.selectedDeliveryAddress = this.cartService.getAddress();
     this.selectedPaymentType = this.cartService.getPaymentDetails();
     this.calculateSubTotal();

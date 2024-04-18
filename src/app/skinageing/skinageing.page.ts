@@ -9,6 +9,7 @@ interface Product {
   description: string;
   price: string;
   isFavorite: boolean; 
+  quantity:string;
 }
 
 @Component({
@@ -19,14 +20,14 @@ interface Product {
 export class SkinageingPage  implements OnInit {
   products: Product[] = [
 
-    { image: 'assets/RadianceSerum.png', title: 'Radiance Serum', description: 'with 3% Hyaluronic Acid + 2% B5 ', price: '€15.50', isFavorite: false},
-    { image: 'assets/serum.png', title: 'Serum for Wrinkles and Loss of Firmness ', description: '1% Plant Collagen + 10% Vitamin C', price: '€56.90' ,isFavorite: false},
-    { image: 'assets/Antioxidant.png', title: 'Antioxidant Moisturizer', description: 'with Carotenoids + Organic Lavender Extract', price: '€51.00', isFavorite: false},
-    { image: 'assets/SPF 50 Face Sunscreen.png', title: 'SPF 50 Face Sunscreen', description: 'with Hyaluronic Acid + Aloe Vera ', price: '€49.40', isFavorite: false},
-    { image: 'assets/single.png', title: 'Firming Moisturiser', description: '  0.2% Retinol + Tsubaki Oil', price: '€30.90' ,isFavorite: false},
-    { image: 'assets/nightcare1.png', title: 'Organic Prickly Pear', description: 'Botanical Oil', price: '  €18.90', isFavorite: false },
-    { image: 'assets/nightcare2.png', title: 'Botanical Blend for Sensitive Skin', description: 'with 650 mg CBD ', price: '€41.90',isFavorite: false },
-    { image: 'assets/nightcare3.png', title: 'Firming night mask', description: 'with organic prickly pear oil ', price: '€36.50' ,isFavorite: false},
+    { image: 'assets/RadianceSerum.png', title: 'Radiance Serum', description: 'with 3% Hyaluronic Acid + 2% B5 ', price: '€15.50',quantity: '1', isFavorite: false},
+    { image: 'assets/serum.png', title: 'Serum for Wrinkles and Loss of Firmness ', description: '1% Plant Collagen + 10% Vitamin C', price: '€56.90' ,quantity: '1',isFavorite: false},
+    { image: 'assets/Antioxidant.png', title: 'Antioxidant Moisturizer', description: 'with Carotenoids + Organic Lavender Extract', price: '€51.00', quantity: '1',isFavorite: false},
+    { image: 'assets/SPF 50 Face Sunscreen.png', title: 'SPF 50 Face Sunscreen', description: 'with Hyaluronic Acid + Aloe Vera ', price: '€49.40',quantity: '1', isFavorite: false},
+    { image: 'assets/single.png', title: 'Firming Moisturiser', description: '  0.2% Retinol + Tsubaki Oil', price: '€30.90' ,quantity: '1',isFavorite: false},
+    { image: 'assets/nightcare1.png', title: 'Organic Prickly Pear', description: 'Botanical Oil', price: '  €18.90',quantity: '1', isFavorite: false },
+    { image: 'assets/nightcare2.png', title: 'Botanical Blend for Sensitive Skin', description: 'with 650 mg CBD ', price: '€41.90',quantity: '1',isFavorite: false },
+    { image: 'assets/nightcare3.png', title: 'Firming night mask', description: 'with organic prickly pear oil ', price: '€36.50' ,quantity: '1',isFavorite: false},
 
    
       
@@ -35,7 +36,7 @@ export class SkinageingPage  implements OnInit {
     constructor(
       private navCtrl: NavController,
       private favoriteService: FavoriteService,
-      private router: Router // Inject the Router service
+      private router: Router 
     ) {}
   
   

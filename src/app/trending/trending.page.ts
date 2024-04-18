@@ -11,6 +11,7 @@ interface Product {
   description: string;
   price: string;
   isFavorite: boolean; 
+  quantity: string;
 }
 
 @Component({
@@ -21,10 +22,10 @@ interface Product {
 export class TrendingPage implements OnInit {
   products: Product[] = [
 
-    { image: 'assets/Tinted Care.png', title: 'Tinted Care Gift Set', description: 'A routine of tinted care for skin, lips, and lashes. Includes four bestselling formulations.', price: '€83.50',isFavorite: false},
-    { image: 'assets/Travel kit.png', title: 'Travel kit', description: 'Five travel-size products for a complete face care routine.', price: ' €80.90' ,isFavorite: false},
-    { image: 'assets/Periodic serums.png', title: 'Periodic serums', description: 'A set of four serums to meet the complex needs..', price: '€51.90', isFavorite: false },
-    { image: 'assets/Antioxidant Trio.png', title: 'Antioxidant Trio', description: ' Our skin is constantly exposed to free radicals.', price: '€84.90' ,isFavorite: false},
+    { image: 'assets/Tinted Care.png', title: 'Tinted Care Gift Set', description: 'A routine of tinted care for skin, lips, and lashes. Includes four bestselling formulations.', price: '€83.50',quantity: '1',isFavorite: false},
+    { image: 'assets/Travel kit.png', title: 'Travel kit', description: 'Five travel-size products for a complete face care routine.', price: ' €80.90' ,quantity: '1',isFavorite: false},
+    { image: 'assets/Periodic serums.png', title: 'Periodic serums', description: 'A set of four serums to meet the complex needs..', price: '€51.90',quantity: '1', isFavorite: false },
+    { image: 'assets/Antioxidant Trio.png', title: 'Antioxidant Trio', description: ' Our skin is constantly exposed to free radicals.', price: '€84.90' ,quantity: '1',isFavorite: false},
     ];
     favorites: any[] = [];
     constructor(
