@@ -3,6 +3,11 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 
 const routes: Routes = [
+  {
+    path: '',
+    redirectTo: '/login',  // Redirect to the login page when the app starts
+    pathMatch: 'full'
+  },
 
   {
     path: 'facecare',
