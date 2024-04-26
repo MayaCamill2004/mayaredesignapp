@@ -26,12 +26,20 @@ export class CheckoutmPage {
   ) {}
 
   ionViewWillEnter() {
+    // Retrieve payment details from local storage
+    const defaultPayment = localStorage.getItem('defaultPayment');
+    if (defaultPayment) {
+      const paymentInfo = JSON.parse(defaultPayment);
+      this.selectedPaymentType = `${paymentInfo.cardTitle} (****${paymentInfo.last4Digits})`;
+    }
+    
+    // Existing code to retrieve other data
     this.cartItems = this.cartService.getCart();
     this.selectedDeliveryAddress = this.cartService.getAddress();
-    this.selectedPaymentType = this.cartService.getPaymentDetails();
     this.calculateSubTotal();
     this.calculateTotalToPay();
   }
+  
 
   async presentAlert(header: string, message: string) {
     const alert = await this.alertController.create({
