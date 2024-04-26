@@ -51,100 +51,103 @@ export class AccountPage {
     this.navigateTo('/account'); 
   }
 
-  private navigateTo(pagePath: string): void {
-    this.navCtrl.navigateForward(pagePath);
-  }
+ // Helper method to handle navigation to a specified page path
+ private navigateTo(pagePath: string): void {
+  this.navCtrl.navigateForward(pagePath);
+}
 
-  handleFileInput(event: any): void {
-    if (event.target && event.target.files) {
-      const file = event.target.files[0];
+// Handle the file input change event for profile picture upload
+handleFileInput(event: any): void {
+  if (event.target && event.target.files) {
+    const file = event.target.files[0];
 
-      if (file) {
-        const reader = new FileReader();
-        reader.onload = (e) => {
-          this.userImage = e.target?.result as string; 
-          this.showOptions = false; 
-        };
-        reader.readAsDataURL(file);
-      }
+    if (file) {
+      // Create a FileReader to read the file
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        // Set the user image to the file's content and hide options
+        this.userImage = e.target?.result as string; 
+        this.showOptions = false; 
+      };
+      // Read the file as a data URL
+      reader.readAsDataURL(file);
     }
   }
+}
 
+// Sign out and navigate to the login page
+signOut(): void {
+  this.navCtrl.navigateRoot(['/login']);
+}
 
-  signOut(): void {
-    // Navigate to the login 
-    this.navCtrl.navigateRoot(['/login']);
-  }
+// Open file input for profile picture upload
+openFileInput(input: HTMLInputElement): void {
+  input.click();
+  this.showOptions = false;
+}
 
-  openFileInput(input: HTMLInputElement): void {
-    input.click();
-    this.showOptions = false;
-  }
+// Method to open camera for profile picture update
+openCamera(): void {
+  // Check if the browser supports getUserMedia
+  if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+    // Access the camera and video feed
+    navigator.mediaDevices.getUserMedia({ video: true })
+      .then(stream => {
+        // Create a new video element to display the video feed
+        const video = document.createElement('video');
+        video.srcObject = stream;
+        video.autoplay = true;
+        document.body.appendChild(video);
 
-// open camera for profile pic update 
-  openCamera(): void {
-    // Check if the browser supports getUserMedia
-    if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-      // Access the camera and video feed
-      navigator.mediaDevices.getUserMedia({ video: true })
-        .then(stream => {
-          // Create a new video element
-          const video = document.createElement('video');
-          video.srcObject = stream;
-          video.autoplay = true;
+        // Create a button to capture the photo
+        const captureButton = document.createElement('button');
+        captureButton.textContent = 'Capture Photo';
+        document.body.appendChild(captureButton);
 
-          document.body.appendChild(video);
-  
-          // button to capture the photo
-          const captureButton = document.createElement('button');
-          captureButton.textContent = 'Capture Photo';
-          document.body.appendChild(captureButton);
-  
-          // Capture the photo when the capture button is clicked
-          captureButton.addEventListener('click', () => {
-            // Pause the video feed
-            video.pause();
-            // Capture a frame from the video stream
-            const canvas = document.createElement('canvas');
-            const context = canvas.getContext('2d');
-            if (context) {
-              canvas.width = video.videoWidth;
-              canvas.height = video.videoHeight;
-              context.drawImage(video, 0, 0, canvas.width, canvas.height);
-  
-              // Convert the canvas content to a Blob
-              canvas.toBlob(blob => {
-                if (blob) {
-                  // Create a FormData object to send the image
-                  const formData = new FormData();
-                  formData.append('profilePicture', blob, 'profile_picture.jpg');
-                 
-       
-                  fetch('your-upload-url', {
-                    method: 'POST',
-                    body: formData,
-                  })
-                  .then(response => {
-                    console.log('Image uploaded successfully');
-                  })
-                  .catch(error => {
-                    // Handle error
-                    console.error('Error uploading image:', error);
-                  });
-                }
-              }, 'image/jpeg');
-            } else {
-              console.error('Canvas context is null.');
-            }
-          });
-        })
-        .catch(error => {
-          // Handle errors, such as user denying access to the camera
-          console.error('Error accessing camera:', error);
+        // Event listener to capture the photo when the capture button is clicked
+        captureButton.addEventListener('click', () => {
+          // Pause the video feed
+          video.pause();
+          // Capture a frame from the video stream and draw it on a canvas
+          const canvas = document.createElement('canvas');
+          const context = canvas.getContext('2d');
+          if (context) {
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+            context.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+            canvas.toBlob(blob => {
+              if (blob) {
+                // Create a FormData object to send the image
+                const formData = new FormData();
+                formData.append('profilePicture', blob, 'profile_picture.jpg');
+               
+                // Send the FormData object as a POST request to upload the image
+                fetch('your-upload-url', {
+                  method: 'POST',
+                  body: formData,
+                })
+                .then(response => {
+                  console.log('Image uploaded successfully');
+                })
+                .catch(error => {
+                  // Handle error
+                  console.error('Error uploading image:', error);
+                });
+              }
+            }, 'image/jpeg');
+          } else {
+            console.error('Canvas context is null.');
+          }
         });
-    } else {
-      // Browser doesn't support getUserMedia
-      console.error('getUserMedia is not supported on this browser');
-    }
+      })
+      .catch(error => {
+        // Handle errors, such as user denying access to the camera
+        console.error('Error accessing camera:', error);
+      });
+  } else {
+    // Browser doesn't support getUserMedia
+    console.error('getUserMedia is not supported on this browser');
   }
-}  
+}
+}

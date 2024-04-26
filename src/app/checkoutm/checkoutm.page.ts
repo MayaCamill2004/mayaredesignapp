@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { CartService } from '../cart.service'; 
+import { CartService } from '../cart.service';
 import { AlertController } from '@ionic/angular';
 
 @Component({
@@ -9,82 +9,87 @@ import { AlertController } from '@ionic/angular';
   styleUrls: ['checkoutm.page.scss'],
 })
 export class CheckoutmPage {
-  cartItems: any[] = []; 
+  cartItems: any[] = [];
   promoCode: string = '';
   selectedDeliveryAddress: string = '';
   selectedDeliveryOption: string = 'standard';
   selectedPaymentType: string = '';
-  subTotal: number = 0; 
-  deliveryCost: number = 7; 
+  subTotal: number = 0;
+  deliveryCost: number = 7;
   totalToPay: number = 0;
-  ;
 
   constructor(
     private cartService: CartService,
     private route: ActivatedRoute,
     private router: Router,
-    private alertController: AlertController,
+    private alertController: AlertController
   ) {}
-
 
   ionViewWillEnter() {
     this.cartItems = this.cartService.getCart();
-    console.log();
     this.selectedDeliveryAddress = this.cartService.getAddress();
     this.selectedPaymentType = this.cartService.getPaymentDetails();
     this.calculateSubTotal();
     this.calculateTotalToPay();
   }
 
-  //error when promo is invalid
-  async presentAlert() {
+  async presentAlert(header: string, message: string) {
     const alert = await this.alertController.create({
-      header: 'Invalid Promo Code',
-      message: 'The promo code you entered is not valid. Please try again.',
+      header: header,
+      message: message,
       buttons: ['OK']
     });
-  
+
     await alert.present();
   }
 
-  confirmOrder() {
+  async confirmOrder() {
+    // Check if the user has filled the delivery address
+    if (!this.selectedDeliveryAddress) {
+      // Show an alert and navigate to the delivery address page
+      await this.presentAlert('Missing Delivery Address', 'Please provide a delivery address before confirming the order.');
+      this.router.navigate(['/address']);
+      return; // Stop execution to prevent navigation
+    }
+
+    // Check if the user has selected a payment method
+    if (!this.selectedPaymentType) {
+      // Show an alert and navigate to the payment method page
+      await this.presentAlert('Missing Payment Method', 'Please provide a payment method before confirming the order.');
+      this.router.navigate(['/paymentmethod']);
+      return; // Stop execution to prevent navigation
+    }
+
+    // Validate promo code and proceed to order confirmation
     if (!this.promoCode || this.validatePromoCode()) {
       this.router.navigate(['/confirmorder']);
     } else {
-      // If an incorrect promo code is entered, show an alert to the user
-      this.presentAlert();
+      // Show an alert if the promo code is invalid
+      await this.presentAlert('Invalid Promo Code', 'The promo code you entered is not valid. Please try again.');
     }
   }
 
   changePaymentType() {
     this.router.navigate(['/paymentmethod']);
   }
+
   changeDeliveryAddress() {
     this.router.navigate(['/address']);
   }
-  
 
   private validatePromoCode(): boolean {
     // Check if the promo code matches '1200M'
     return this.promoCode.trim().toUpperCase() === '1200M';
   }
+
   calculateTotalToPay(): void {
     this.totalToPay = this.subTotal + this.deliveryCost;
   }
- 
-  confirmorder() {
-    this.router.navigate(['/reviews']);
-  }
+
   calculateSubTotal(): number {
     this.subTotal = this.cartItems.reduce((total, item) => {
       return total + (item.price * item.quantity);
     }, 0);
     return this.subTotal;
   }
-
-  
-
-  
-
 }
-

@@ -90,10 +90,7 @@ const routes: Routes = [
     path: 'paymentmethod',
     loadChildren: () => import('./paymentmethod/paymentmethod.module').then( m => m.PaymentmethodPageModule)
   },
-  {
-    path: 'address-book',
-    loadChildren: () => import('./address-book/address-book.module').then( m => m.AddressBookPageModule)
-  },
+
   {
     path: 'orders',
     loadChildren: () => import('./orders/orders.module').then( m => m.OrdersPageModule)

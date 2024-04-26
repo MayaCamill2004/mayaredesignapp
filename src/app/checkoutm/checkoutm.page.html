@@ -41,13 +41,7 @@
     </ion-text>
     <ion-button (click)="changeDeliveryAddress()">Change</ion-button>
   </ion-item>
-  
 
-  <!-- Delivery Options -->
-  <ion-item>
-  <ion-label class="delivery-options">Delivery Options</ion-label>
-
-  </ion-item>
   
 
   <!-- Payment Type -->
@@ -76,8 +70,10 @@
   <ion-text>{{ totalToPay | currency:'EUR':'symbol-narrow' }}</ion-text>
 </ion-item>
 
+
 <!-- Confirm Order Button -->
-<ion-button expand="full" color="primary" (click)="confirmorder()">Confirm Order</ion-button>
+<ion-button expand="full" color="primary" (click)="confirmOrder()">Confirm Order</ion-button>
+
 
 <ng-template #emptyCart>
   <p>Your cart is empty.</p>
