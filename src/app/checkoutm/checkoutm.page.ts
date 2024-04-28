@@ -15,7 +15,7 @@ export class CheckoutmPage {
   selectedDeliveryOption: string = 'standard';
   selectedPaymentType: string = '';
   subTotal: number = 0;
-  deliveryCost: number = 7;
+  deliveryCost: number = 7; 
   totalToPay: number = 0;
 
   constructor(
@@ -33,13 +33,14 @@ export class CheckoutmPage {
       this.selectedPaymentType = `${paymentInfo.cardTitle} (****${paymentInfo.last4Digits})`;
     }
     
-    // Existing code to retrieve other data
+    // Load cart items and delivery address from the CartService
     this.cartItems = this.cartService.getCart();
     this.selectedDeliveryAddress = this.cartService.getAddress();
+
+    // Calculate sub-total and total-to-pay when the view is loaded
     this.calculateSubTotal();
     this.calculateTotalToPay();
   }
-  
 
   async presentAlert(header: string, message: string) {
     const alert = await this.alertController.create({
@@ -57,7 +58,7 @@ export class CheckoutmPage {
       // Show an alert and navigate to the delivery address page
       await this.presentAlert('Missing Delivery Address', 'Please provide a delivery address before confirming the order.');
       this.router.navigate(['/address']);
-      return; // Stop execution to prevent navigation
+      return;
     }
 
     // Check if the user has selected a payment method
@@ -65,7 +66,7 @@ export class CheckoutmPage {
       // Show an alert and navigate to the payment method page
       await this.presentAlert('Missing Payment Method', 'Please provide a payment method before confirming the order.');
       this.router.navigate(['/paymentmethod']);
-      return; // Stop execution to prevent navigation
+      return;
     }
 
     // Validate promo code and proceed to order confirmation
@@ -90,14 +91,12 @@ export class CheckoutmPage {
     return this.promoCode.trim().toUpperCase() === '1200M';
   }
 
-  calculateTotalToPay(): void {
-    this.totalToPay = this.subTotal + this.deliveryCost;
+  calculateSubTotal(): void {
+    this.subTotal = this.cartItems.reduce((total, item) => total + (item.price * item.quantity), 0);
   }
 
-  calculateSubTotal(): number {
-    this.subTotal = this.cartItems.reduce((total, item) => {
-      return total + (item.price * item.quantity);
-    }, 0);
-    return this.subTotal;
+  calculateTotalToPay(): void {
+    // Calculate total to pay 
+    this.totalToPay = this.subTotal + this.deliveryCost;
   }
 }
