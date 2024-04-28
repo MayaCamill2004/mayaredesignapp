@@ -41,8 +41,8 @@ export class CartPage {
 
   deleteFromCart(item: any) {
     this.cartItems = this.cartItems.filter(cartItem => cartItem !== item);
-    this.cartService.removeFromCart(item);
-  }
+    this.cartService.updateQuantity(item, 0);
+}
 
 
   checkout() {

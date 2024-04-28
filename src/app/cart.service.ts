@@ -7,32 +7,33 @@ export class CartService {
   private selectedProduct: any;
   private cart: any[] = [];
   private deliveryAddress: string = '';
-  private paymentDetails: string;
-  
+  private paymentDetails: string = '';
 
-  constructor() {
-  this.paymentDetails = ''; 
-}
-addToCart(product: any): void {
-  const existingProduct = this.cart.find((item) => item.title === product.title);
-  if (existingProduct) {
-    existingProduct.quantity = parseInt(existingProduct.quantity) + parseInt(product.quantity);
-  } else {
-    this.cart.push(product);
-  }
-}
+  constructor() {}
 
-  getCart(): any[] {
-    return this.cart;
-  }
-
-  removeFromCart(product: any): void {
-    const index = this.cart.findIndex((item) => item === product);
-    if (index !== -1) {
-      this.cart.splice(index, 1);
+  // Method to add a product to the cart
+  addToCart(product: any): void {
+    const existingProduct = this.cart.find((item) => item.title === product.title);
+    if (existingProduct) {
+        existingProduct.quantity += product.quantity;
+    } else {
+        this.cart.push({ ...product, quantity: product.quantity });
     }
-  }
+}
 
+getCart(): any[] {
+    return this.cart;
+}
+
+updateQuantity(product: any, newQuantity: number): void {
+    const cartProduct = this.cart.find((item) => item.title === product.title);
+    if (cartProduct) {
+        cartProduct.quantity = newQuantity;
+    }
+}
+
+
+  //to set and get the selected product
   setSelectedProduct(product: any): void {
     this.selectedProduct = product;
   }
@@ -41,6 +42,7 @@ addToCart(product: any): void {
     return this.selectedProduct;
   }
 
+  //  to set and get delivery address
   setAddress(address: string): void {
     this.deliveryAddress = address;
   }
@@ -48,6 +50,8 @@ addToCart(product: any): void {
   getAddress(): string {
     return this.deliveryAddress;
   }
+
+  // to set and get payment details
   getPaymentDetails(): string {
     return this.paymentDetails;
   }
@@ -55,16 +59,12 @@ addToCart(product: any): void {
   setPaymentDetails(details: string): void {
     this.paymentDetails = details;
   }
-  updateQuantity(product: any, newQuantity: string): void {
-    const cartProduct = this.cart.find((item) => item.title === product.title);
-    if (cartProduct) {
-      cartProduct.quantity = newQuantity;
-    }
-  }
 
-  getQuantity(product: any): string {
+
+
+  //  to get the quantity of a specific product in the cart
+  getQuantity(product: any): number {
     const cartProduct = this.cart.find((item) => item.title === product.title);
-    return cartProduct ? cartProduct.quantity : '0';
+    return cartProduct ? cartProduct.quantity : 0;
   }
 }
- 
