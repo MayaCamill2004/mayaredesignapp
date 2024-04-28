@@ -71,7 +71,7 @@ export class CheckoutmPage {
 
     // Validate promo code and proceed to order confirmation
     if (!this.promoCode || this.validatePromoCode()) {
-      this.router.navigate(['/confirmorder']);
+      this.router.navigate(['/reviews']);
     } else {
       // Show an alert if the promo code is invalid
       await this.presentAlert('Invalid Promo Code', 'The promo code you entered is not valid. Please try again.');

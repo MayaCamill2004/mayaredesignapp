@@ -14,7 +14,7 @@ export class PaymentmethodPage {
   expiryDate = '';
   cardHolderName = '';
   cvv = '';
-  formSubmitted = false;
+  formSubmitted = true;
 
   constructor(
     private router: Router,
@@ -111,13 +111,14 @@ export class PaymentmethodPage {
    * Saves the default payment method in local storage.
    */
   saveDefaultPaymentMethod(): void {
-    // Save the card information as an object
     const defaultPayment = {
-      cardTitle: this.cardTitle,
-      last4Digits: this.cardNumber.slice(-4), // Store only the last 4 digits
-      expiryDate: this.expiryDate,
-      cardHolderName: this.cardHolderName,
+        cardTitle: this.cardTitle,
+        last4Digits: this.cardNumber.toString().slice(-4), 
+        expiryDate: this.expiryDate,
+        cardHolderName: this.cardHolderName,
     };
+
+  
 
     // Store the default payment method in local storage
     localStorage.setItem('defaultPayment', JSON.stringify(defaultPayment));
